@@ -1,0 +1,41 @@
+class ComposeEmail extends Component {
+  state = {
+    status: 'composing',
+  }
+
+  sendLetter = () => {
+    this.setState({ status: 'sending' });
+  }
+
+  render() {
+    const { status } = this.state;
+
+    const transportStatus =
+      status === 'composing'
+        ? 'open'
+        : 'closed';
+
+    return (
+      <NodeConsumer>
+        {({
+          composeBtn,
+          outboxHeading,
+        }) => (
+          <Transport
+            status={transportStatus}
+            fromNode={composeBtn}
+            toNode={outboxHeading}
+          >
+            <Foldable
+              isFolded={status === 'send'}
+            >
+              <Letter
+                handleSend={this.sendLetter}
+              />
+            </Foldable>
+          </Transport>
+        )}
+      </NodeConsumer>
+    );
+  }
+}

@@ -1,0 +1,114 @@
+class Confetti extends Component {
+  static propTypes = {
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+
+    shapes: PropTypes.array,
+    numParticles: PropTypes.number,
+    emitDuration: PropTypes.number,
+    gravity: PropTypes.number,
+    spin: PropTypes.number,
+    twist: PropTypes.number,
+    minSpeed: PropTypes.number,
+    maxSpeed: PropTypes.number,
+    minScale: PropTypes.number,
+    maxScale: PropTypes.number,
+
+    makeItRainOn: PropTypes.oneOf([
+      'click',
+      'mount', // Not implemented
+    ]),
+  };
+
+  state = {
+    particles: [],
+  };
+
+  componentDidUpdate(
+    prevProps: Props,
+    prevState: State
+  ) {
+    if (
+      prevState.particles.length === 0 &&
+      this.state.particles.length > 0
+    ) {
+      this.tick();
+    }
+  }
+
+  generateParticles = () => {
+    const newParticles =
+      range(0, this.props.numParticles)
+        .map(() => {
+          // ✂️ Particle initialization ✂️
+          // Includes generating random values
+          // for size, speed, spin, twist...
+          // Features ~trigonometry~
+        });
+
+    this.setState({
+      particles: [
+        ...this.state.particles,
+        ...newParticles,
+      ],
+    });
+  };
+
+  tick = () => {
+    window.requestAnimationFrame(() => {
+      const particles = this.calculateNextPositionForParticles();
+
+      this.setState(
+        { particles },
+        this.tick
+      );
+    });
+  };
+
+  calculateNextPositionForParticles = () => {
+    return this.state.particles
+      .map(particle => {
+        // ✂️ Particle calculations ✂️
+        // Figure out each particle's new
+        // onscreen position
+      })
+  };
+
+  draw = ctx => {
+    const { particles } = this.state;
+
+    ctx.clearRect(0, 0, width, height);
+
+    particles.forEach(particle => {
+      ctx.translate(/* ✂️ */);
+      ctx.rotate(/* ✂️ */);
+      ctx.scale(/* ✂️ */);
+
+      ctx.drawImage(/* ✂️ */);
+
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+    });
+  };
+
+  render() {
+    const {
+      width,
+      height,
+      makeItRainOn,
+    } = this.props;
+
+    return (
+      <Canvas
+        width={width}
+        height={height}
+        draw={this.draw}
+        onClick={
+          makeItRainOn === 'click' &&
+          this.generateParticles
+        }
+      />
+    );
+  }
+}
+
+export default Confetti;

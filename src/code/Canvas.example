@@ -1,0 +1,49 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+class Canvas extends Component {
+  static propTypes = {
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    draw: PropTypes.func.isRequired,
+  }
+
+  componentDidMount() {
+    this.ctx = this.canvas.getContext('2d');
+
+    this.scale();
+
+    this.props.draw(this.ctx);
+  }
+
+  componentDidUpdate() {
+    this.props.draw(this.ctx);
+  }
+
+  scale = () => {
+    const { width, height } = this.props;
+
+    const ratio = 
+      window.devicePixelRatio || 1;
+
+    this.canvas.width = width * ratio;
+    this.canvas.height = height * ratio;
+    this.canvas.style.width = width + 'px';
+    this.canvas.style.height = height + 'px';
+
+    this.ctx.scale(ratio, ratio);
+  };
+
+  render() {
+    const {draw, ...delegated} = this.props;
+
+    return (
+      <canvas
+        ref={node => (this.canvas = node)}
+        {...delegated}
+      />
+    );
+  }
+}
+
+export default Canvas;

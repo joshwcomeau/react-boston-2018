@@ -1,0 +1,23 @@
+class ComposeEmail extends Component {
+  state = {
+    status: 'composing',
+  }
+
+  sendLetter = () => {
+    this.setState({ status: 'sending' });
+  }
+
+  render() {
+    const { status } = this.state;
+
+    return (
+      <Foldable
+        isFolded={status === 'sending'}
+      >
+        <Letter
+          handleSend={this.sendLetter}
+        />
+      </Foldable>;
+    )
+  }
+}

@@ -1,0 +1,34 @@
+import React, { Component } from 'react';
+
+const NodeContext = React.createContext(
+  'node'
+);
+
+class NodeProvider extends Component {
+  state = {
+    nodes: {},
+    refCapturer: id => node => {
+      this.setState({
+        nodes: {
+          ...this.state.nodes,
+          [id]: node,
+        },
+      });
+    },
+  };
+
+  render() {
+    return (
+      <NodeContext.Provider
+        value={this.state}
+      >
+        {this.props.children}
+      </NodeContext.Provider>
+    );
+  }
+}
+
+export const NodeConsumer =
+  NodeContext.Consumer;
+
+export default NodeProvider;
