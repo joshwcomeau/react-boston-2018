@@ -1,0 +1,52 @@
+const triangleShapeFactory = ({
+  size = 16,
+  fill,
+}) => (
+  `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 10 10"
+    width="${size}"
+    height="${size}"
+  >
+    <polygon
+      fill="${fill}"
+      points="0 10 5 0 10 10"
+    />
+  </svg>`
+);
+
+const zigZagShapeFactory = ({
+  size = 20,
+  fill,
+}) => (
+  `<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 23 92"
+    width="${size}"
+    height="${size * 4}"
+  >
+    <polygon
+      fill="${fill}"
+      points="17 31 3 29 10 0 23 1 17 31"
+    />
+    <polygon
+      fill="${fill}"
+      points="13 92 0 91 6 61 20 62 13 92"
+    />
+    <polygon
+      fill="${mixWithWhite(fill, 0)}"
+      points="20 62 6 61 3 29 17 31 20 62"
+    />
+  </svg>`
+);
+
+const createImageElement = svgString => {
+  const base64ShapeString =
+    'data:image/svg+xml;base64,' +
+    window.btoa(svgString);
+
+  const imageElement = new Image();
+
+  imageElement.src = base64ShapeString;
+  return imageElement;
+};

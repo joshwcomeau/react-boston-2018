@@ -46,7 +46,13 @@ import FoldConcept from './components/FoldConcept';
 import Foldable from './components/Foldable';
 import Underlined from './components/Underlined';
 import Spacer from './components/Spacer';
-
+import {
+  circleShapeFactory,
+  triangleShapeFactory,
+  rectangleShapeFactory,
+  zigZagShapeFactory,
+} from './components/Confetti/confetti-shapes';
+import { convertHexColorToRgb } from './components/Confetti/Confetti.helpers';
 import Title from './slides/Title';
 import SectionStart from './slides/SectionStart';
 import WishTheInternet from './slides/WishTheInternet';
@@ -271,13 +277,82 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <Heading>Canvas Animation</Heading>
           <ComponentPlayground
             code={require('./code/CanvasAnimation.example')}
             theme="external"
             scope={{ Canvas, Motion, spring }}
           />
         </Slide>
+
+        <Slide>
+          <Heading textColor="secondary">Particles</Heading>
+          <br />
+          <br />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+            }}
+          >
+            <div
+              dangerouslySetInnerHTML={{
+                __html: circleShapeFactory({
+                  size: 150,
+                  fill: convertHexColorToRgb('#63d9ea'),
+                }),
+              }}
+            />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: triangleShapeFactory({
+                  size: 150,
+                  fill: convertHexColorToRgb('#ed5fa6'),
+                }),
+              }}
+            />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: rectangleShapeFactory({
+                  width: 75,
+                  height: 150,
+                  fill: convertHexColorToRgb('#f4d345'),
+                }),
+              }}
+            />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: zigZagShapeFactory({
+                  size: 75,
+                  fill: convertHexColorToRgb('#26edd5'),
+                }),
+              }}
+            />
+          </div>
+        </Slide>
+
+        <CodeSlide
+          bgColor="secondary"
+          lang="jsx"
+          code={require('./code/ConfettiShapes.example')}
+          ranges={[
+            {
+              loc: [0],
+              title: 'Confetti Shapes',
+            },
+            { loc: [0, 4] },
+            { loc: [4, 16] },
+            { loc: [17, 21] },
+            { loc: [21, 27] },
+            { loc: [27, 40] },
+
+            // createImageElement
+            { loc: [42, 43] },
+            { loc: [43, 46] },
+            { loc: [47, 50] },
+            { loc: [50, 51] },
+          ]}
+        />
 
         <CodeSlide
           bgColor="secondary"

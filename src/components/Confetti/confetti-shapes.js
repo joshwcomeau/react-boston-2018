@@ -25,7 +25,7 @@ const createImageElement = svgString => {
 // TODO (josh): See if there's a way to use React components instead, just
 // need to find a client-side way to get a string representation of a
 // component's rendered result.
-const circleShapeFactory = ({ size = 15, fill }) => `
+export const circleShapeFactory = ({ size = 15, fill }) => `
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 10 10"
@@ -41,7 +41,7 @@ const circleShapeFactory = ({ size = 15, fill }) => `
     </svg>
 `;
 
-const triangleShapeFactory = ({ size = 16, fill }) => `
+export const triangleShapeFactory = ({ size = 16, fill }) => `
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 10 10"
@@ -55,7 +55,7 @@ const triangleShapeFactory = ({ size = 16, fill }) => `
     </svg>
 `;
 
-const rectangleShapeFactory = ({ width = 6, height = 12, fill }) => `
+export const rectangleShapeFactory = ({ width = 6, height = 12, fill }) => `
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 ${width} ${height}"
@@ -72,7 +72,7 @@ const rectangleShapeFactory = ({ width = 6, height = 12, fill }) => `
     </svg>
 `;
 
-const zigZagShapeFactory = ({ size = 20, fill }) => `
+export const zigZagShapeFactory = ({ size = 20, fill }) => `
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 23.74 92.52"

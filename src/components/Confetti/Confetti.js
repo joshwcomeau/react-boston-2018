@@ -219,7 +219,7 @@ class Confetti extends Component {
         const y =
           particle.initialPosition.y +
           particle.vy * age +
-          this.props.gravity * age * age / 2;
+          (this.props.gravity * age * age) / 2;
 
         const diameter = getDiameter(
           particle.width * particle.scale,
