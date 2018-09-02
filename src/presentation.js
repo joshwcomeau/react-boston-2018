@@ -35,6 +35,7 @@ import caniusePrefersReducedMotionSrc from './assets/caniuse-prefers-reduced-mot
 import unsplashErrorKetchupSrc from './assets/unsplash-error-ketchup.mp4';
 import unsplashErrorCatSrc from './assets/unsplash-error-cat.mp4';
 import joshComputerSrc from './assets/josh-cpu.jpg';
+import reactEuropeSrc from './assets/react-europe-talk.gif';
 
 import FullscreenImage from './components/FullscreenImage';
 import ConfettiManager from './components/ConfettiManager';
@@ -73,6 +74,7 @@ preloader({
   unsplashErrorKetchupSrc,
   unsplashErrorCatSrc,
   joshComputerSrc,
+  reactEuropeSrc,
 });
 
 // HACK: Spectacle applies a `transform: scale(1)` to all slides.
@@ -149,6 +151,10 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
+          <img src={reactEuropeSrc} width="100%" />
+        </Slide>
+
+        <Slide>
           <FullscreenImage src={whimsyDefinitionSrc} />
         </Slide>
 
@@ -161,8 +167,8 @@ export default class Presentation extends React.Component {
               }}
             >
               broad definition
-            </span>,
-            <br /> it's easy to find examples.
+            </span>
+            ,<br /> it's easy to find examples.
           </Heading>
         </Slide>
 
@@ -192,7 +198,8 @@ export default class Presentation extends React.Component {
 
         <Slide bgColor="secondary" transition={['none']}>
           <Heading size={3} textFont="secondary" textColor="pink">
-            Let's focus on<br />
+            Let's focus on
+            <br />
             <span
               style={{
                 color: COLORS.lime[500],
@@ -207,7 +214,8 @@ export default class Presentation extends React.Component {
               }}
             >
               animation
-            </span>.
+            </span>
+            .
           </Heading>
         </Slide>
 
@@ -368,7 +376,9 @@ export default class Presentation extends React.Component {
 
         <Slide bgColor="secondary" transition={['none']}>
           <Heading textFont="secondary" textColor="green" size={5}>
-            “Meaningful Motion with<br />Action-Driven Animation”
+            “Meaningful Motion with
+            <br />
+            Action-Driven Animation”
           </Heading>
           <Spacer size={50} />
           <Text>
@@ -488,7 +498,8 @@ export default class Presentation extends React.Component {
           <br />
           <br />
           <Text>
-            This effect is accomplished by CSS, but it's messy.<br />
+            This effect is accomplished by CSS, but it's messy.
+            <br />
             With React, we can abstract this into a <Foldable /> component with
             a beautiful API.
           </Text>
@@ -700,7 +711,8 @@ export default class Presentation extends React.Component {
               }}
             >
               Accessibility
-            </Underlined>.
+            </Underlined>
+            .
           </Text>
           <br />
           <br />
