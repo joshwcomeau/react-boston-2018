@@ -351,6 +351,9 @@ export default class Presentation extends React.Component {
             { loc: [43, 46] },
             { loc: [47, 50] },
             { loc: [50, 51] },
+            { loc: [55, 62] },
+            { loc: [63, 64] },
+            { loc: [65, 66] },
           ]}
         />
 
@@ -366,60 +369,70 @@ export default class Presentation extends React.Component {
             },
             { loc: [0, 1] },
             { loc: [2, 4] },
-            { loc: [5, 15] },
-            { loc: [16, 20] },
-            { loc: [22, 25] },
+            { loc: [5, 14] },
+            { loc: [15, 19] },
+            { loc: [21, 24] },
 
             // Render
-            { loc: [92, 93] },
-            { loc: [93, 98] },
-            { loc: [99, 110] },
-            { loc: [103, 104] },
-            { loc: [104, 108] },
-            // draw
-            { loc: [76, 77] },
-            { loc: [79, 80] },
-            { loc: [81, 82] },
-            { loc: [82, 85] },
-            { loc: [86, 87] },
-            { loc: [88, 89] },
+            { loc: [83, 84] },
+            { loc: [84, 89] },
+            { loc: [90, 101] },
+            { loc: [94, 95] },
+            { loc: [95, 99] },
 
             // generateParticles
-            { loc: [38, 39] },
-            { loc: [39, 41] },
-            { loc: [41, 47] },
-            { loc: [48, 54] },
-            {
-              loc: [48, 54],
-              note: 'How does our animation loop start?',
-            },
+            { loc: [37, 38] },
+            { loc: [38, 40] },
+            { loc: [40, 46] },
+            { loc: [47, 53] },
+
+            // Re-render
+            { loc: [94, 95] },
+
+            // draw
+            { loc: [67, 68] },
+            { loc: [68, 69] },
+            { loc: [70, 71] },
+            { loc: [72, 73] },
+            { loc: [73, 76] },
+            { loc: [77, 78] },
+            { loc: [79, 80] },
+            { loc: [79, 80], note: 'How does our animation loop start?' },
 
             // cDU
-            { loc: [26, 37] },
+            { loc: [25, 36] },
 
             // tick
+            { loc: [55, 56] },
             { loc: [56, 57] },
-            { loc: [57, 58] },
-            { loc: [58, 59] },
+            { loc: [57, 59] },
             { loc: [60, 64] },
-            { loc: [62, 63] },
-
-            // calculateNextPositionForParticles
-            { loc: [67, 68] },
-            { loc: [68, 74] },
+            { loc: [61, 62] },
 
             // Render
-            { loc: [92, 111] },
+            { loc: [83, 101] },
           ]}
         />
 
-        <Slide bgColor="secondary" transition={[null]}>
-          <Heading textColor="red">Performance</Heading>
-          <List textColor="primary">
-            <ListItem>Use Canvas</ListItem>
-            <ListItem>Sneak around React</ListItem>
-          </List>
+        <Slide
+          bgColor="secondary"
+          transition={[null]}
+          notes={`
+            This may seem prohibitively expensive from a performance standpoint. Because we're re-rendering on every frame, we're asking React to do a whole update every 16 milliseconds, eating up precious time.
+
+            The expensive part of a React re-render is the reconciliation process, where it tries to figure out what's changed in the DOM and update the DOM to match its own understanding. In our case, the DOM markup is really simple though!
+
+            (cut to a chrome inspector shot of just the canvas)
+
+            So it's actually really quick for React to say "Nope, nothing changed here, no DOM mutation necessary"
+
+            That said, it's still not free. At Khan Academy, we test on cheap Chromebooks, and this animation works pretty well... but if you really need to eke out every drop of performance, you can sneak around React and manage updates yourself.
+          `}
+        >
+          <Heading textColor="red">This sounds expensive...</Heading>
         </Slide>
+
+        <Slide>TODO: A quick look at Confetti sans React</Slide>
 
         <Slide bgColor="secondary">
           <Heading textColor="pink" textFont="secondary" size={3}>

@@ -3,7 +3,6 @@ class Confetti extends Component {
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
 
-    shapes: PropTypes.array,
     numParticles: PropTypes.number,
     emitDuration: PropTypes.number,
     gravity: PropTypes.number,
@@ -40,10 +39,10 @@ class Confetti extends Component {
     const newParticles =
       range(0, this.props.numParticles)
         .map(() => {
-          // ✂️ Particle initialization ✂️
-          // Includes generating random values
-          // for size, speed, spin, twist...
-          // Features ~trigonometry~
+          const image = createZigzag();
+
+          // ✂️ More particle init stuff,
+          // ✂️ generate random values.
         });
 
     this.setState({
@@ -56,22 +55,14 @@ class Confetti extends Component {
 
   tick = () => {
     window.requestAnimationFrame(() => {
-      const particles = this.calculateNextPositionForParticles();
+      const particles =
+        this.getNextParticleState();
 
       this.setState(
         { particles },
         this.tick
       );
     });
-  };
-
-  calculateNextPositionForParticles = () => {
-    return this.state.particles
-      .map(particle => {
-        // ✂️ Particle calculations ✂️
-        // Figure out each particle's new
-        // onscreen position
-      })
   };
 
   draw = ctx => {
@@ -84,7 +75,7 @@ class Confetti extends Component {
       ctx.rotate(/* ✂️ */);
       ctx.scale(/* ✂️ */);
 
-      ctx.drawImage(/* ✂️ */);
+      ctx.drawImage(particle.image);
 
       ctx.setTransform(1, 0, 0, 1, 0, 0);
     });

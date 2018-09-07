@@ -50,3 +50,17 @@ const createImageElement = svgString => {
   imageElement.src = base64ShapeString;
   return imageElement;
 };
+
+
+
+// To use:
+const createZigzag = args => (
+  compose(
+    createImageElement,
+    zigZagShapeFactory
+  )
+);
+
+const zigzag = createZigzag({ size: 30 });
+
+ctx.drawImage(zigzag)

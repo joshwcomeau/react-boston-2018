@@ -26,72 +26,72 @@ const createImageElement = svgString => {
 // need to find a client-side way to get a string representation of a
 // component's rendered result.
 export const circleShapeFactory = ({ size = 15, fill }) => `
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 10 10"
-        width="${size}"
-        height="${size}"
-    >
-        <circle
-            cx="5"
-            cy="5"
-            r="5"
-            fill="${formatRgbColor(fill)}"
-        />
-    </svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 10 10"
+    width="${size}"
+    height="${size}"
+  >
+    <circle
+      cx="5"
+      cy="5"
+      r="5"
+      fill="${formatRgbColor(fill)}"
+    />
+  </svg>
 `;
 
 export const triangleShapeFactory = ({ size = 16, fill }) => `
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 10 10"
-        width="${size}"
-        height="${size}"
-    >
-        <polygon
-            fill="${formatRgbColor(fill)}"
-            points="0 10 5 0 10 10"
-        />
-    </svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 10 10"
+    width="${size}"
+    height="${size}"
+  >
+    <polygon
+      fill="${formatRgbColor(fill)}"
+      points="0 10 5 0 10 10"
+    />
+  </svg>
 `;
 
 export const rectangleShapeFactory = ({ width = 6, height = 12, fill }) => `
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 ${width} ${height}"
-        width="${width}"
-        height="${height}"
-    >
-        <rect
-            x="0"
-            y="0"
-            width="${width}"
-            height="${height}"
-            fill="${formatRgbColor(fill)}"
-        />
-    </svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 ${width} ${height}"
+    width="${width}"
+    height="${height}"
+  >
+    <rect
+      x="0"
+      y="0"
+      width="${width}"
+      height="${height}"
+      fill="${formatRgbColor(fill)}"
+    />
+  </svg>
 `;
 
 export const zigZagShapeFactory = ({ size = 20, fill }) => `
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 23.74 92.52"
-        width="${size}"
-        height="${size * 4}"
-    >
-        <polygon
-            fill="${formatRgbColor(fill)}"
-            points="17.08 31.49 3.56 29.97 10.22 0 23.74 1.52 17.08 31.49"
-        />
-        <polygon
-            fill="${formatRgbColor(fill)}"
-            points="13.53 92.52 0 91 6.66 61.03 20.19 62.55 13.53 92.52"
-        />
-        <polygon
-            fill="${formatRgbColor(mixWithWhite(fill, 0.35))}"
-            points="20.19 62.55 6.66 61.03 3.56 29.97 17.08 31.49 20.19 62.55"
-        />
-    </svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 23.74 92.52"
+    width="${size}"
+    height="${size * 4}"
+  >
+    <polygon
+      fill="${formatRgbColor(fill)}"
+      points="17.08 31.49 3.56 29.97 10.22 0 23.74 1.52 17.08 31.49"
+    />
+    <polygon
+      fill="${formatRgbColor(fill)}"
+      points="13.53 92.52 0 91 6.66 61.03 20.19 62.55 13.53 92.52"
+    />
+    <polygon
+      fill="${formatRgbColor(mixWithWhite(fill, 0.35))}"
+      points="20.19 62.55 6.66 61.03 3.56 29.97 17.08 31.49 20.19 62.55"
+    />
+  </svg>
 `;
 
 type ShapeProps = {
