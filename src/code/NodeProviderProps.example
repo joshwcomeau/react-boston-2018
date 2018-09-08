@@ -1,0 +1,23 @@
+{
+  nodes: {
+    composeBtn: <div id="compose" ... />,
+    inboxTab: <div id="inbox" ... />,
+  },
+  boundingBoxes: {
+    composeBtn: {
+      width: 85,
+      height: 20,
+      top: 20,
+      left: 750,
+      ...
+    },
+    inboxTab: {
+      width: 100,
+      height: 25,
+      top: 10,
+      left: 50,
+      ...
+    },
+  },
+  refCapturer: (node) => void,
+}

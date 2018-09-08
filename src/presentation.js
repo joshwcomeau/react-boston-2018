@@ -721,7 +721,7 @@ export default class Presentation extends React.Component {
           ranges={[
             {
               loc: [0],
-              title: 'Consumer',
+              title: '<Foldable> in use',
             },
             { loc: [0, 4] },
             { loc: [5, 8] },
@@ -739,6 +739,30 @@ export default class Presentation extends React.Component {
         <Slide bgColor="#000000">
           <video autoPlay loop src={transportStorybookSrc} width={920} />
         </Slide>
+
+        <Slide>
+          <Heading textColor="secondary">{'<NodeProvider>'}</Heading>
+          <p>Capture DOM node and bounding-box information</p>
+
+          <br />
+
+          <Heading textColor="secondary">{'<Transport>'}</Heading>
+          <p>Orchestrate motion between DOM nodes</p>
+        </Slide>
+
+        <CodeSlide
+          bgColor="secondary"
+          lang="jsx"
+          transition={['none']}
+          code={require('./code/NodeProviderProps.example')}
+          ranges={[
+            {
+              loc: [0],
+              title: '<NodeProvider> data',
+            },
+            { loc: [1, 7] },
+          ]}
+        />
 
         <CodeSlide
           bgColor="secondary"
