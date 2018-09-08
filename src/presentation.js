@@ -36,6 +36,20 @@ import unsplashErrorKetchupSrc from './assets/unsplash-error-ketchup.mp4';
 import unsplashErrorCatSrc from './assets/unsplash-error-cat.mp4';
 import joshComputerSrc from './assets/josh-cpu.jpg';
 import reactEuropeSrc from './assets/react-europe-talk.gif';
+import spinnerInstagramSrc from './assets/spinner-instagram.gif';
+import spinnerLinkedinSrc from './assets/spinner-linkedin.gif';
+import spinnerKhanAcademySrc from './assets/spinner-khanacademy.gif';
+import khanSpinnerRotateSrc from './assets/khan-spinner-rotate.gif';
+import khanSpinnerScrubSrc from './assets/khan-spinner-scrub.gif';
+import khanSpinnerSproutSrc from './assets/khan-spinner-sprout.gif';
+import khanSpinnerWobbleSrc from './assets/khan-spinner-wobble.gif';
+import performanceMattersSrc from './assets/performance-matters.png';
+import guppyIconSrc from './assets/guppy-icon.png';
+import guppyScreenshotSrc from './assets/guppy-screenshot.png';
+import guppyOriginalInstallSrc from './assets/guppy-original-install.mp4';
+import guppyWhimsicalInstallSrc from './assets/guppy-whimsical-install.mp4';
+import windows98InstallSrc from './assets/windows-98-install.gif';
+import windowsXPInstallSrc from './assets/windows-xp-install.gif';
 
 import FullscreenImage from './components/FullscreenImage';
 import ConfettiManager from './components/ConfettiManager';
@@ -45,6 +59,8 @@ import Caption from './components/Caption';
 import FoldConcept from './components/FoldConcept';
 import Foldable from './components/Foldable';
 import Underlined from './components/Underlined';
+import FakeLoadFor from './components/FakeLoadFor';
+
 import Spacer from './components/Spacer';
 import {
   circleShapeFactory,
@@ -81,6 +97,19 @@ preloader({
   unsplashErrorCatSrc,
   joshComputerSrc,
   reactEuropeSrc,
+  spinnerInstagramSrc,
+  spinnerLinkedinSrc,
+  spinnerKhanAcademySrc,
+  khanSpinnerRotateSrc,
+  khanSpinnerScrubSrc,
+  khanSpinnerSproutSrc,
+  khanSpinnerWobbleSrc,
+  guppyIconSrc,
+  guppyScreenshotSrc,
+  guppyOriginalInstallSrc,
+  guppyWhimsicalInstallSrc,
+  windows98InstallSrc,
+  windowsXPInstallSrc,
 });
 
 // HACK: Spectacle applies a `transform: scale(1)` to all slides.
@@ -225,8 +254,110 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
+        {/*
+
+
+
+          PART II
+
+
+
+        */}
+
         <Slide bgColor="teal">
-          <SectionStart subtitle="Example 1" title="Confetti" />
+          <SectionStart
+            subtitle="Example 1"
+            title={<FakeLoadFor duration={2000}>Spinners</FakeLoadFor>}
+          />
+        </Slide>
+
+        <Slide>
+          <FullscreenImage src={spinnerLinkedinSrc} />
+        </Slide>
+        <Slide>
+          <FullscreenImage src={spinnerInstagramSrc} />
+        </Slide>
+        <Slide>
+          <FullscreenImage src={spinnerKhanAcademySrc} />
+        </Slide>
+
+        <Slide>
+          <FullscreenImage src={khanSpinnerSproutSrc} />
+        </Slide>
+        <Slide>
+          <FullscreenImage src={khanSpinnerRotateSrc} />
+        </Slide>
+        <Slide>
+          <FullscreenImage src={khanSpinnerWobbleSrc} />
+        </Slide>
+        <Slide>
+          <FullscreenImage src={khanSpinnerScrubSrc} />
+        </Slide>
+
+        <Slide>
+          <span style={{ fontSize: 22 }}>Amazing spinners by</span>
+          <Heading size={4}>Mary Zhong</Heading>
+          <Heading size={4}>Sophie Morie</Heading>
+          <Heading size={4}>Ioana Crant</Heading>
+        </Slide>
+
+        <Slide>
+          <img src={guppyIconSrc} style={{ maxHeight: '50vh' }} />
+        </Slide>
+
+        <Slide>
+          <FullscreenImage src={guppyScreenshotSrc} />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <video
+            autoPlay
+            src={guppyOriginalInstallSrc}
+            style={{
+              width: '100%',
+              margin: 'auto',
+            }}
+          />
+        </Slide>
+
+        <Slide>
+          <img src={windowsXPInstallSrc} style={{ width: '50%' }} />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <video
+            autoPlay
+            src={guppyWhimsicalInstallSrc}
+            style={{
+              width: '100%',
+              margin: 'auto',
+            }}
+          />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Heading>Perceived Performance Matters!</Heading>
+        </Slide>
+
+        <Slide>
+          <FullscreenImage src={performanceMattersSrc} />
+        </Slide>
+
+        <Slide>
+          <Heading textColor="pink">Think outside the loop</Heading>
+        </Slide>
+
+        {/*
+
+
+
+          PART II
+
+
+
+        */}
+        <Slide bgColor="teal">
+          <SectionStart subtitle="Example 2" title="Confetti" />
         </Slide>
 
         <Slide bgColor="secondary">
@@ -434,28 +565,18 @@ export default class Presentation extends React.Component {
 
         <Slide>TODO: A quick look at Confetti sans React</Slide>
 
-        <Slide bgColor="secondary">
-          <Heading textColor="pink" textFont="secondary" size={3}>
-            “But I'm not building an educational app...”
-          </Heading>
-        </Slide>
-
-        <Slide>
-          <FullscreenImage portrait src={facebookCongratsSrc} />
-        </Slide>
-
         {/*
 
 
 
-          PART II
+          PART III
 
 
 
         */}
 
         <Slide bgColor="teal">
-          <SectionStart subtitle="Example 2" title="Email Client" />
+          <SectionStart subtitle="Example 3" title="Email Client" />
         </Slide>
 
         <Slide bgColor="secondary" textColor="primary">
