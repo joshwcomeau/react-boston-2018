@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import {
   CodePane,
   ComponentPlayground,
   Deck,
   Heading,
-  ListItem,
-  List,
   Slide,
   Text,
 } from 'spectacle';
@@ -20,8 +19,10 @@ import { COLORS } from './constants';
 import askJeevesSrc from './assets/ask-jeeves.gif';
 import mcdonaldsSrc from './assets/mcdonalds-full.gif';
 import mcdonaldsZoomSrc from './assets/mcdonalds-zoom.gif';
-import mcdonaldsNowSrc from './assets/mcdonalds-now.png';
+import mcdonaldsNowSrc from './assets/mcdonalds-now.mp4';
 import jesseSkiingSrc from './assets/jesse-skiing.jpg';
+import webDesignMuseumSrc from './assets/webdesignmuseum.png';
+import habboSrc from './assets/habbo.png';
 import whimsyDefinitionSrc from './assets/whimsy-definition.png';
 import facebookCongratsSrc from './assets/facebook-congrats.gif';
 import confettiMockupSrc from './assets/confetti-mockup.png';
@@ -50,6 +51,7 @@ import guppyOriginalInstallSrc from './assets/guppy-original-install.mp4';
 import guppyWhimsicalInstallSrc from './assets/guppy-whimsical-install.mp4';
 import windows98InstallSrc from './assets/windows-98-install.gif';
 import windowsXPInstallSrc from './assets/windows-xp-install.gif';
+import mapSrc from './assets/map.png';
 
 import FullscreenImage from './components/FullscreenImage';
 import ConfettiManager from './components/ConfettiManager';
@@ -60,6 +62,8 @@ import FoldConcept from './components/FoldConcept';
 import Foldable from './components/Foldable';
 import Underlined from './components/Underlined';
 import FakeLoadFor from './components/FakeLoadFor';
+import Earth from './components/Earth';
+import WhimsicalInstaller from './components/WhimsicalInstaller';
 
 import Spacer from './components/Spacer';
 import {
@@ -82,7 +86,9 @@ preloader({
   mcdonaldsSrc,
   mcdonaldsZoomSrc,
   mcdonaldsNowSrc,
+  webDesignMuseumSrc,
   jesseSkiingSrc,
+  habboSrc,
   whimsyDefinitionSrc,
   facebookCongratsSrc,
   confettiMockupSrc,
@@ -110,6 +116,7 @@ preloader({
   guppyWhimsicalInstallSrc,
   windows98InstallSrc,
   windowsXPInstallSrc,
+  mapSrc,
 });
 
 // HACK: Spectacle applies a `transform: scale(1)` to all slides.
@@ -166,7 +173,11 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="secondary" transition={['none']}>
-          <FullscreenImage src={askJeevesSrc} />
+          <FullscreenImage src={webDesignMuseumSrc} />
+        </Slide>
+
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={habboSrc} />
         </Slide>
 
         <Slide bgColor="secondary" transition={['none']}>
@@ -178,7 +189,14 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="secondary" transition={['none']}>
-          <FullscreenImage src={mcdonaldsNowSrc} />
+          <video
+            autoPlay
+            src={mcdonaldsNowSrc}
+            style={{
+              width: '100%',
+              margin: 'auto',
+            }}
+          />
         </Slide>
 
         <Slide className="slideWithoutScale">
@@ -258,7 +276,7 @@ export default class Presentation extends React.Component {
 
 
 
-          PART II
+          PART I
 
 
 
@@ -345,6 +363,26 @@ export default class Presentation extends React.Component {
 
         <Slide>
           <Heading textColor="pink">Think outside the loop</Heading>
+        </Slide>
+
+        <Slide>
+          <Centered
+            style={{
+              height: 600,
+            }}
+          >
+            <Earth size={200} />
+          </Centered>
+        </Slide>
+
+        <Slide>
+          <FullscreenImage src={mapSrc} />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Centered>
+            <WhimsicalInstaller isRunning width={600} />
+          </Centered>
         </Slide>
 
         {/*
@@ -1074,6 +1112,12 @@ if (prefersReducedMotion) {
     );
   }
 }
+
+const Centered = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 /**
  * Spectacle puts everything in its own transformed layer, and so it's actually
