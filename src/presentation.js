@@ -32,8 +32,11 @@ import tooMuchAnimationSrc from './assets/too-much-animation-rachel-nabors.jpeg'
 import whimsicalFold from './assets/whimsical-fold.mp4';
 import transportStorybookSrc from './assets/transport-storybook.mp4';
 import transportAreasSrc from './assets/transport-areas.jpg';
-import webRenderSrc from './assets/webrender.mp4';
-import caniusePrefersReducedMotionSrc from './assets/caniuse-prefers-reduced-motion.png';
+import houdiniCurveSrc from './assets/houdini-curve.mp4';
+import houdiniCheckboxesSrc from './assets/houdini-checkboxes.mp4';
+import houdiniHighlighterSrc from './assets/houdini-highlighter.mp4';
+import houdiniRippleSrc from './assets/houdini-ripple.gif';
+import caniusePrmSrc from './assets/caniuse-prm.png';
 import unsplashChairSrc from './assets/unsplash-chair.mp4';
 import unsplashHighFiveSrc from './assets/unsplash-high-five.mp4';
 import joshComputerSrc from './assets/josh-cpu.jpg';
@@ -48,8 +51,8 @@ import khanSpinnerWobbleSrc from './assets/khan-spinner-wobble.gif';
 import performanceMattersSrc from './assets/performance-matters.png';
 import guppyIconSrc from './assets/guppy-icon.png';
 import guppyScreenshotSrc from './assets/guppy-screenshot.png';
-import guppyOriginalInstallSrc from './assets/guppy-original-install.mp4';
-import guppyWhimsicalInstallSrc from './assets/guppy-whimsical-install.mp4';
+import guppyOriginalInstallSrc from './assets/guppy-before.mp4';
+import guppyWhimsicalInstallSrc from './assets/guppy-after.mp4';
 import windows98InstallSrc from './assets/windows-98-install.gif';
 import windowsXPInstallSrc from './assets/windows-xp-install.gif';
 import mapSrc from './assets/map.png';
@@ -101,8 +104,11 @@ preloader({
   whimsicalFold,
   transportStorybookSrc,
   transportAreasSrc,
-  webRenderSrc,
-  caniusePrefersReducedMotionSrc,
+  houdiniCurveSrc,
+  houdiniCheckboxesSrc,
+  houdiniHighlighterSrc,
+  houdiniRippleSrc,
+  caniusePrmSrc,
   unsplashChairSrc,
   unsplashHighFiveSrc,
   joshComputerSrc,
@@ -375,16 +381,12 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide bgColor="secondary">
-          <Heading>Perceived Performance Matters!</Heading>
-        </Slide>
-
         <Slide>
           <FullscreenImage src={performanceMattersSrc} />
         </Slide>
 
-        <Slide>
-          <Heading textColor="pink">Think outside the loop</Heading>
+        <Slide bgColor="secondary">
+          <Heading>Perceived Performance Matters!</Heading>
         </Slide>
 
         <Slide>
@@ -1029,32 +1031,53 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide
-          bgColor="secondary"
-          notes={`
-            This demo is of 600 DOM nodes, each being animated using top/left
-            and width/height. This works in Firefox's new rendering engine
-            because it can hardware-accelerate all CSS properties (!!!)
-          `}
-        >
-          <Heading
-            textFont="secondary"
-            textColor="primary"
-            size={2}
-            style={{ marginTop: -150 }}
-          >
-            WebRender
-          </Heading>
-          <br />
+        <Slide>
           <video
             autoPlay
             loop
-            src={webRenderSrc}
+            src={houdiniHighlighterSrc}
             style={{
-              width: '75%',
               margin: 'auto',
             }}
           />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <video
+            autoPlay
+            loop
+            src={houdiniCheckboxesSrc}
+            style={{
+              margin: 'auto',
+            }}
+          />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <img src={houdiniRippleSrc} />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <video
+            autoPlay
+            loop
+            src={houdiniCurveSrc}
+            style={{
+              margin: 'auto',
+            }}
+          />
+        </Slide>
+
+        <Slide>
+
+            <Heading size={4} textColor="secondary">
+            <a href="https://css-houdini.rocks"></a>
+              https://css-houdini.rocks
+          </a>
+            </Heading>
+          <br />
+          <br />
+          By <a href="https://twitter.com/iamvdo">@iamvdo</a>
         </Slide>
 
         <Slide bgColor="secondary">
@@ -1142,7 +1165,7 @@ if (prefersReducedMotion) {
         </Slide>
 
         <Slide bgColor="#f2e8d6">
-          <FullscreenImage src={caniusePrefersReducedMotionSrc} />
+          <FullscreenImage src={caniusePrmSrc} />
         </Slide>
 
         <Slide>
