@@ -21,6 +21,7 @@ import mcdonaldsSrc from './assets/mcdonalds-full.gif';
 import mcdonaldsZoomSrc from './assets/mcdonalds-zoom.gif';
 import mcdonaldsNowSrc from './assets/mcdonalds-now.mp4';
 import jesseSkiingSrc from './assets/jesse-skiing.jpg';
+import doomSrc from './assets/doom.webp';
 import webDesignMuseumSrc from './assets/webdesignmuseum.png';
 import habboSrc from './assets/habbo.png';
 import whimsyDefinitionSrc from './assets/whimsy-definition.png';
@@ -33,8 +34,8 @@ import transportStorybookSrc from './assets/transport-storybook.mp4';
 import transportAreasSrc from './assets/transport-areas.jpg';
 import webRenderSrc from './assets/webrender.mp4';
 import caniusePrefersReducedMotionSrc from './assets/caniuse-prefers-reduced-motion.png';
-import unsplashErrorKetchupSrc from './assets/unsplash-error-ketchup.mp4';
-import unsplashErrorCatSrc from './assets/unsplash-error-cat.mp4';
+import unsplashChairSrc from './assets/unsplash-chair.mp4';
+import unsplashHighFiveSrc from './assets/unsplash-high-five.mp4';
 import joshComputerSrc from './assets/josh-cpu.jpg';
 import reactEuropeSrc from './assets/react-europe-talk.gif';
 import spinnerInstagramSrc from './assets/spinner-instagram.gif';
@@ -52,6 +53,8 @@ import guppyWhimsicalInstallSrc from './assets/guppy-whimsical-install.mp4';
 import windows98InstallSrc from './assets/windows-98-install.gif';
 import windowsXPInstallSrc from './assets/windows-xp-install.gif';
 import mapSrc from './assets/map.png';
+import serverLoadSrc from './assets/server-load.mp4';
+import netscapeNSrc from './assets/netscape-n.gif';
 
 import FullscreenImage from './components/FullscreenImage';
 import ConfettiManager from './components/ConfettiManager';
@@ -88,6 +91,7 @@ preloader({
   mcdonaldsNowSrc,
   webDesignMuseumSrc,
   jesseSkiingSrc,
+  doomSrc,
   habboSrc,
   whimsyDefinitionSrc,
   facebookCongratsSrc,
@@ -99,8 +103,8 @@ preloader({
   transportAreasSrc,
   webRenderSrc,
   caniusePrefersReducedMotionSrc,
-  unsplashErrorKetchupSrc,
-  unsplashErrorCatSrc,
+  unsplashChairSrc,
+  unsplashHighFiveSrc,
   joshComputerSrc,
   reactEuropeSrc,
   spinnerInstagramSrc,
@@ -117,6 +121,8 @@ preloader({
   windows98InstallSrc,
   windowsXPInstallSrc,
   mapSrc,
+  netscapeNSrc,
+  serverLoadSrc,
 });
 
 // HACK: Spectacle applies a `transform: scale(1)` to all slides.
@@ -173,11 +179,11 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="secondary" transition={['none']}>
-          <FullscreenImage src={webDesignMuseumSrc} />
+          <FullscreenImage src={doomSrc} />
         </Slide>
 
         <Slide bgColor="secondary" transition={['none']}>
-          <FullscreenImage src={habboSrc} />
+          <FullscreenImage src={webDesignMuseumSrc} />
         </Slide>
 
         <Slide bgColor="secondary" transition={['none']}>
@@ -229,9 +235,9 @@ export default class Presentation extends React.Component {
           <video
             autoPlay
             loop
-            src={unsplashErrorKetchupSrc}
+            src={unsplashChairSrc}
             style={{
-              width: '75%',
+              width: '100%',
               margin: 'auto',
             }}
           />
@@ -240,10 +246,9 @@ export default class Presentation extends React.Component {
         <Slide bgColor="secondary" transition={['none']}>
           <video
             autoPlay
-            loop
-            src={unsplashErrorCatSrc}
+            src={unsplashHighFiveSrc}
             style={{
-              width: '75%',
+              width: '100%',
               margin: 'auto',
             }}
           />
@@ -285,23 +290,37 @@ export default class Presentation extends React.Component {
         <Slide bgColor="teal">
           <SectionStart
             subtitle="Example 1"
-            title={<FakeLoadFor duration={2000}>Spinners</FakeLoadFor>}
+            title={
+              <FakeLoadFor duration={4000}>Loading Indicators</FakeLoadFor>
+            }
           />
         </Slide>
 
-        <Slide>
+        <Slide transition={['none']}>
+          <video
+            autoPlay
+            src={serverLoadSrc}
+            style={{
+              width: '100%',
+              margin: 'auto',
+            }}
+          />
+        </Slide>
+
+        <Slide bgColor="secondary" transition={['none']}>
+          <img src={netscapeNSrc} width={250} style={{ margin: 'auto' }} />
+        </Slide>
+
+        <Slide bgColor="secondary">
           <FullscreenImage src={spinnerLinkedinSrc} />
         </Slide>
-        <Slide>
+        <Slide bgColor="secondary">
           <FullscreenImage src={spinnerInstagramSrc} />
         </Slide>
-        <Slide>
+        <Slide bgColor="secondary">
           <FullscreenImage src={spinnerKhanAcademySrc} />
         </Slide>
 
-        <Slide>
-          <FullscreenImage src={khanSpinnerSproutSrc} />
-        </Slide>
         <Slide>
           <FullscreenImage src={khanSpinnerRotateSrc} />
         </Slide>
@@ -310,6 +329,9 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <FullscreenImage src={khanSpinnerScrubSrc} />
+        </Slide>
+        <Slide>
+          <FullscreenImage src={khanSpinnerSproutSrc} />
         </Slide>
 
         <Slide>
