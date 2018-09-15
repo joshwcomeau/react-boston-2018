@@ -403,7 +403,82 @@ export default class Presentation extends React.Component {
 
         <Slide bgColor="secondary">
           <Centered>
-            <WhimsicalInstaller isRunning width={600} />
+            <WhimsicalInstaller
+              isRunning
+              queueLength={8}
+              useTransform
+              width={600}
+            />
+          </Centered>
+        </Slide>
+
+        <CodeSlide
+          bgColor="secondary"
+          lang="jsx"
+          code={require('./code/FileOriginal.example')}
+          ranges={[
+            { loc: [0, 1], title: '<File />' },
+            { loc: [1, 5] },
+            { loc: [6, 7] },
+            { loc: [8, 9] },
+            { loc: [9, 13] },
+            { loc: [15, 16] },
+
+            { loc: [16, 19] },
+            { loc: [20, 21] },
+            { loc: [22, 26] },
+            { loc: [27, 31] },
+
+            { loc: [33, 34] },
+            { loc: [34, 35] },
+            { loc: [36, 37] },
+            { loc: [39, 41] },
+            { loc: [41, 44] },
+            { loc: [44, 45] },
+            { loc: [47, 48] },
+          ]}
+        />
+
+        <Slide bgColor="secondary">
+          <Centered>
+            <WhimsicalInstaller isRunning queueLength={1} width={600} />
+          </Centered>
+        </Slide>
+
+        <CodeSlide
+          bgColor="secondary"
+          lang="jsx"
+          code={require('./code/FileFinal.example')}
+          ranges={[
+            { loc: [0, 1], title: '<File /> v2' },
+            { loc: [1, 5] },
+            { loc: [6, 7] },
+            { loc: [8, 9] },
+            { loc: [9, 13] },
+            { loc: [14, 19] },
+
+            { loc: [21, 22] },
+            { loc: [22, 27] },
+            { loc: [31, 32] },
+            { loc: [33, 40] },
+
+            { loc: [42, 43] },
+            { loc: [43, 46] },
+            { loc: [50, 53] },
+            { loc: [53, 59] },
+            { loc: [60, 61] },
+            { loc: [63, 64] },
+          ]}
+        />
+
+        <Slide bgColor="secondary">
+          <Centered>
+            <WhimsicalInstaller
+              isRunning
+              queueLength={8}
+              useTransform
+              width={600}
+            />
           </Centered>
         </Slide>
 

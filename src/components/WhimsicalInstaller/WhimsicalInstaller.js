@@ -566,7 +566,7 @@ class WhimsicalInstaller extends PureComponent<Props, State> {
   };
 
   render() {
-    const { width } = this.props;
+    const { width, queueLength, useTransform } = this.props;
     const { files, isFolderOpen } = this.state;
 
     const height = this.getHeight();
@@ -587,6 +587,8 @@ class WhimsicalInstaller extends PureComponent<Props, State> {
             y={file.y}
             id={file.id}
             status={file.status}
+            queueLength={queueLength}
+            useTransform={useTransform}
             handleMouseDown={this.handleClickFile}
           />
         ))}

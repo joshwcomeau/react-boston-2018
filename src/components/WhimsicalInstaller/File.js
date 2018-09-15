@@ -12,16 +12,24 @@ type Props = {
   size?: number,
   status: FileStatus,
   id: string,
+  queueLength: number,
+  useTransform: boolean,
   handleMouseDown?: (id: string) => void,
 };
 
 class File extends PureComponent<Props> {
+  static defaultProps = {
+    queueLength: 8,
+  };
+
   lastCoordinates: Array<{ x: number, y: number }> = [];
 
   componentDidUpdate(prevProps: Props) {
+    const { queueLength } = this.props;
+
     this.lastCoordinates.push({ x: prevProps.x, y: prevProps.y });
 
-    if (this.lastCoordinates.length > 8) {
+    if (this.lastCoordinates.length > queueLength) {
       this.lastCoordinates.shift();
     }
   }
@@ -49,7 +57,15 @@ class File extends PureComponent<Props> {
   };
 
   render() {
-    const { x, y, id, size, status, handleMouseDown } = this.props;
+    const {
+      x,
+      y,
+      id,
+      size,
+      status,
+      useTransform,
+      handleMouseDown,
+    } = this.props;
 
     const rotation = this.getFileRotation();
 
@@ -60,6 +76,7 @@ class File extends PureComponent<Props> {
         size={size}
         status={status}
         rotation={rotation}
+        useTransform={useTransform}
         onMouseDown={() =>
           typeof handleMouseDown === 'function' && handleMouseDown(id)
         }
@@ -110,19 +127,23 @@ const isGrabbable = (status: FileStatus) =>
 
 const WIDTH_RATIO = 20 / 28;
 
+const getXCoord = ({ x, size }) => x - (size * WIDTH_RATIO) / 2 + 'px';
+const getYCoord = ({ y, size }) => y - size / 2 + 'px';
+
 const Wrapper = styled.div.attrs({
   style: props => ({
+    top: props.useTransform ? 0 : getYCoord(props),
+    left: props.useTransform ? 0 : getXCoord(props),
     transform: `
       translate(
-        ${props.x - (props.size * WIDTH_RATIO) / 2}px,
-        ${props.y - props.size / 2}px
+        ${props.useTransform ? getXCoord(props) : 0},
+        ${props.useTransform ? getYCoord(props) : 0}
       )
       rotate(${props.rotation}deg)`,
   }),
 })`
   position: absolute;
-  top: 0;
-  left: 0;
+
   z-index: 2;
   height: ${props => props.size}px;
   overflow: visible;

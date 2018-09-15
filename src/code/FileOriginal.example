@@ -1,0 +1,54 @@
+class File extends PureComponent {
+  static propTypes = {
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+  }
+
+  previousCoordinate = null;
+
+  componentDidUpdate(prevProps) {
+    this.previousCoordinate = {
+      x: prevProps.x,
+      y: prevProps.y
+    };
+  }
+
+  getFileRotation = () => {
+    if (!this.previousCoordinate) {
+      return 0;
+    }
+
+    const { x, y } = this.props;
+
+    const deltaX =
+      x - this.previousCoordinate.x;
+    const deltaY =
+      y - this.previousCoordinate.y;
+
+    return Math.atan2(
+      deltaY,
+      deltaX
+    );
+  };
+
+  render() {
+    const { x, y } = this.props;
+
+    const rotation = this.getFileRotation();
+
+    return (
+      <div
+        style={{
+          position: 'absolute',
+          top: x,
+          left: y,
+          transform: `rotate(${rotation}rad)`,
+        }}
+      >
+        <img src={fileSrc} />
+      </div>
+    );
+  }
+}
+
+export default File;
