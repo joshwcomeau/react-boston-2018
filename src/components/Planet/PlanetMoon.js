@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Color from 'color';
 
 type Props = {|
   size: number,
@@ -56,18 +55,16 @@ class PlanetMoon extends Component<Props> {
   render() {
     const { size, planetSize, background, offset, tilt } = this.props;
 
-    const colorObj = Color(background);
-
     return (
       <Wrapper planetSize={planetSize} tilt={tilt} offset={offset} size={size}>
         <Orbit innerRef={node => (this.node = node)}>
           <Moon size={size}>
-            <Top color={colorObj.string()} radius={size / 2} />
-            <Back color={colorObj.darken(0.25).string()} radius={size / 2} />
-            <Front color={colorObj.darken(0.1).string()} radius={size / 2} />
-            <Bottom color={colorObj.darken(0.5).string()} radius={size / 2} />
-            <Left color={colorObj.darken(0.15).string()} radius={size / 2} />
-            <Right color={colorObj.darken(0.15).string()} radius={size / 2} />
+            <Top color="#EEE" radius={size / 2} />
+            <Back color="#999" radius={size / 2} />
+            <Front color="#DDD" radius={size / 2} />
+            <Bottom color="#666" radius={size / 2} />
+            <Left color="#BBB" radius={size / 2} />
+            <Right color="#BBB" radius={size / 2} />
           </Moon>
         </Orbit>
       </Wrapper>

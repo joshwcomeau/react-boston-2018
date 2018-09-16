@@ -60,6 +60,9 @@ import mapSrc from './assets/map.png';
 import serverLoadSrc from './assets/server-load.mp4';
 import netscapeNSrc from './assets/netscape-n.gif';
 import canvasDomSrc from './assets/canvas-dom.png';
+import seriousOffice1Src from './assets/serious-office-1.jpg';
+import seriousOffice2Src from './assets/serious-office-2.jpg';
+import seriousOffice3Src from './assets/serious-office-3.jpg';
 
 import FullscreenImage from './components/FullscreenImage';
 import ConfettiManager from './components/ConfettiManager';
@@ -133,6 +136,9 @@ preloader({
   netscapeNSrc,
   serverLoadSrc,
   canvasDomSrc,
+  seriousOffice1Src,
+  seriousOffice2Src,
+  seriousOffice3Src,
 });
 
 // HACK: Spectacle applies a `transform: scale(1)` to all slides.
@@ -597,79 +603,6 @@ export default class Presentation extends React.Component {
           <img src={canvasDomSrc} style={{ width: '100%' }} />
         </Slide>
 
-        <Slide>
-          <Heading textColor="secondary">Particles</Heading>
-          <br />
-          <br />
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-            }}
-          >
-            <div
-              dangerouslySetInnerHTML={{
-                __html: circleShapeFactory({
-                  size: 150,
-                  fill: convertHexColorToRgb('#63d9ea'),
-                }),
-              }}
-            />
-            <div
-              dangerouslySetInnerHTML={{
-                __html: triangleShapeFactory({
-                  size: 150,
-                  fill: convertHexColorToRgb('#ed5fa6'),
-                }),
-              }}
-            />
-            <div
-              dangerouslySetInnerHTML={{
-                __html: rectangleShapeFactory({
-                  width: 75,
-                  height: 150,
-                  fill: convertHexColorToRgb('#f4d345'),
-                }),
-              }}
-            />
-            <div
-              dangerouslySetInnerHTML={{
-                __html: zigZagShapeFactory({
-                  size: 75,
-                  fill: convertHexColorToRgb('#26edd5'),
-                }),
-              }}
-            />
-          </div>
-        </Slide>
-
-        <CodeSlide
-          bgColor="secondary"
-          lang="jsx"
-          code={require('./code/ConfettiShapes.example')}
-          ranges={[
-            {
-              loc: [0],
-              title: 'Confetti Shapes',
-            },
-            { loc: [0, 4] },
-            { loc: [4, 16] },
-            { loc: [17, 21] },
-            { loc: [21, 27] },
-            { loc: [27, 40] },
-
-            // createImageElement
-            { loc: [42, 43] },
-            { loc: [43, 46] },
-            { loc: [47, 50] },
-            { loc: [50, 51] },
-            { loc: [55, 62] },
-            { loc: [63, 64] },
-            { loc: [65, 66] },
-          ]}
-        />
-
         <CodeSlide
           bgColor="secondary"
           lang="jsx"
@@ -726,6 +659,60 @@ export default class Presentation extends React.Component {
             { loc: [83, 101] },
           ]}
         />
+
+        <Slide>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+            }}
+          >
+            <div
+              dangerouslySetInnerHTML={{
+                __html: circleShapeFactory({
+                  size: 150,
+                  fill: convertHexColorToRgb('#63d9ea'),
+                }),
+              }}
+            />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: triangleShapeFactory({
+                  size: 150,
+                  fill: convertHexColorToRgb('#ed5fa6'),
+                }),
+              }}
+            />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: rectangleShapeFactory({
+                  width: 75,
+                  height: 150,
+                  fill: convertHexColorToRgb('#f4d345'),
+                }),
+              }}
+            />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: zigZagShapeFactory({
+                  size: 75,
+                  fill: convertHexColorToRgb('#26edd5'),
+                }),
+              }}
+            />
+          </div>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <FullscreenImage src={seriousOffice1Src} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={seriousOffice2Src} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={seriousOffice3Src} />
+        </Slide>
 
         {/*
 
@@ -895,7 +882,7 @@ export default class Presentation extends React.Component {
         />
 
         <Slide bgColor="deepPurple" textColor="primary">
-          <SectionStart subtitle="Element 2" title="Node Transporter" />
+          <SectionStart subtitle="Element 2" title="Moving Nodes Around" />
         </Slide>
 
         <Slide bgColor="#000000">

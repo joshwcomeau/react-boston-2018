@@ -41,9 +41,11 @@
     "react": "^16.4.0",
     "react-dev-utils": "^4.2.1",
     "react-dom": "^16.4.0",
+    "react-flip-toolkit": "^4.0.7",
     "react-highlight": "^0.11.1",
     "react-motion": "^0.5.2",
-    "react-pose": "^3.2.1",
+    "react-pose": "^3.3.0",
+    "react-spring": "^5.7.2",
     "resize-observer-polyfill": "^1.5.0",
     "spectacle": "^4.0.0",
     "spectacle-code-slide": "^0.5.2",
@@ -63,7 +65,9 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "flow": "flow",
-    "deploy": "yarn run build && surge -p build -d the-case-for-whimsy.surge.sh"
+    "deploy": "yarn run build && surge -p build -d the-case-for-whimsy.surge.sh",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -108,6 +112,10 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/react": "^3.4.10",
     "raw-loader": "^0.5.1"
   }
 }

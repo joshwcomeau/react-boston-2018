@@ -15,13 +15,14 @@ class Animation extends Component {
   }
 
   stopAnimation() {
+    this.setState(initialState);
     window.cancelAnimationFrame(this.animationId);
   }
 
   startAnimation() {
     this.stopAnimation();
 
-    this.setState(initialState, this.tick);
+    this.tick();
   }
 
   tick() {
