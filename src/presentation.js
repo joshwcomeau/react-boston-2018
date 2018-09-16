@@ -43,6 +43,7 @@ import joshComputerSrc from './assets/josh-cpu.jpg';
 import reactEuropeSrc from './assets/react-europe-talk.gif';
 import spinnerInstagramSrc from './assets/spinner-instagram.gif';
 import spinnerLinkedinSrc from './assets/spinner-linkedin.gif';
+import spinnerTwitterSrc from './assets/spinner-twitter.gif';
 import spinnerKhanAcademySrc from './assets/spinner-khanacademy.gif';
 import khanSpinnerRotateSrc from './assets/khan-spinner-rotate.gif';
 import khanSpinnerScrubSrc from './assets/khan-spinner-scrub.gif';
@@ -50,7 +51,7 @@ import khanSpinnerSproutSrc from './assets/khan-spinner-sprout.gif';
 import khanSpinnerWobbleSrc from './assets/khan-spinner-wobble.gif';
 import performanceMattersSrc from './assets/performance-matters.png';
 import guppyIconSrc from './assets/guppy-icon.png';
-import guppyScreenshotSrc from './assets/guppy-screenshot.png';
+import guppyIntroSrc from './assets/guppy-intro.mp4';
 import guppyOriginalInstallSrc from './assets/guppy-before.mp4';
 import guppyWhimsicalInstallSrc from './assets/guppy-after.mp4';
 import windows98InstallSrc from './assets/windows-98-install.gif';
@@ -58,6 +59,7 @@ import windowsXPInstallSrc from './assets/windows-xp-install.gif';
 import mapSrc from './assets/map.png';
 import serverLoadSrc from './assets/server-load.mp4';
 import netscapeNSrc from './assets/netscape-n.gif';
+import canvasDomSrc from './assets/canvas-dom.png';
 
 import FullscreenImage from './components/FullscreenImage';
 import ConfettiManager from './components/ConfettiManager';
@@ -115,13 +117,14 @@ preloader({
   reactEuropeSrc,
   spinnerInstagramSrc,
   spinnerLinkedinSrc,
+  spinnerTwitterSrc,
   spinnerKhanAcademySrc,
   khanSpinnerRotateSrc,
   khanSpinnerScrubSrc,
   khanSpinnerSproutSrc,
   khanSpinnerWobbleSrc,
   guppyIconSrc,
-  guppyScreenshotSrc,
+  guppyIntroSrc,
   guppyOriginalInstallSrc,
   guppyWhimsicalInstallSrc,
   windows98InstallSrc,
@@ -129,6 +132,7 @@ preloader({
   mapSrc,
   netscapeNSrc,
   serverLoadSrc,
+  canvasDomSrc,
 });
 
 // HACK: Spectacle applies a `transform: scale(1)` to all slides.
@@ -172,6 +176,11 @@ export default class Presentation extends React.Component {
         progress={null}
         theme={theme}
       >
+        {/*
+          Single blank slide, so that the second slide has a fade-in effect
+        */}
+        <Slide />
+
         <Slide>
           <WishTheInternet />
         </Slide>
@@ -180,7 +189,7 @@ export default class Presentation extends React.Component {
           <FullscreenImage src={joshComputerSrc} />
         </Slide>
 
-        <Slide bgColor="secondary" transition={['none']}>
+        <Slide bgColor="secondary">
           <FullscreenImage src={jesseSkiingSrc} />
         </Slide>
 
@@ -252,6 +261,7 @@ export default class Presentation extends React.Component {
         <Slide bgColor="secondary" transition={['none']}>
           <video
             autoPlay
+            loop
             src={unsplashHighFiveSrc}
             style={{
               width: '100%',
@@ -302,7 +312,11 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide transition={['none']}>
+        <Slide bgColor="secondary" transition={['none']}>
+          <img src={netscapeNSrc} width={250} style={{ margin: 'auto' }} />
+        </Slide>
+
+        <Slide bgColor="secondary" transition={['none']}>
           <video
             autoPlay
             src={serverLoadSrc}
@@ -314,16 +328,15 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="secondary" transition={['none']}>
-          <img src={netscapeNSrc} width={250} style={{ margin: 'auto' }} />
-        </Slide>
-
-        <Slide bgColor="secondary">
           <FullscreenImage src={spinnerLinkedinSrc} />
         </Slide>
-        <Slide bgColor="secondary">
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={spinnerTwitterSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
           <FullscreenImage src={spinnerInstagramSrc} />
         </Slide>
-        <Slide bgColor="secondary">
+        <Slide bgColor="secondary" transition={['none']}>
           <FullscreenImage src={spinnerKhanAcademySrc} />
         </Slide>
 
@@ -348,11 +361,21 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <img src={guppyIconSrc} style={{ maxHeight: '50vh' }} />
+          <Heading size={6}>This was on my mind, while building Guppy.</Heading>
+          <br />
+          <br />
+          <img src={guppyIconSrc} style={{ width: '200px' }} />
         </Slide>
 
-        <Slide>
-          <FullscreenImage src={guppyScreenshotSrc} />
+        <Slide bgColor="secondary">
+          <video
+            autoPlay
+            src={guppyIntroSrc}
+            style={{
+              width: '100%',
+              margin: 'auto',
+            }}
+          />
         </Slide>
 
         <Slide bgColor="secondary">
@@ -552,6 +575,28 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
+        <Slide
+          bgColor="secondary"
+          transition={[null]}
+          notes={`
+            This may seem prohibitively expensive from a performance standpoint. Because we're re-rendering on every frame, we're asking React to do a whole update every 16 milliseconds, eating up precious time.
+
+            The expensive part of a React re-render is the reconciliation process, where it tries to figure out what's changed in the DOM and update the DOM to match its own understanding. In our case, the DOM markup is really simple though!
+
+            (cut to a chrome inspector shot of just the canvas)
+
+            So it's actually really quick for React to say "Nope, nothing changed here, no DOM mutation necessary"
+
+            That said, it's still not free. At Khan Academy, we test on cheap Chromebooks, and this animation works pretty well... but if you really need to eke out every drop of performance, you can sneak around React and manage updates yourself.
+          `}
+        >
+          <Heading textColor="red">This sounds expensive...</Heading>
+        </Slide>
+
+        <Slide>
+          <img src={canvasDomSrc} style={{ width: '100%' }} />
+        </Slide>
+
         <Slide>
           <Heading textColor="secondary">Particles</Heading>
           <br />
@@ -681,26 +726,6 @@ export default class Presentation extends React.Component {
             { loc: [83, 101] },
           ]}
         />
-
-        <Slide
-          bgColor="secondary"
-          transition={[null]}
-          notes={`
-            This may seem prohibitively expensive from a performance standpoint. Because we're re-rendering on every frame, we're asking React to do a whole update every 16 milliseconds, eating up precious time.
-
-            The expensive part of a React re-render is the reconciliation process, where it tries to figure out what's changed in the DOM and update the DOM to match its own understanding. In our case, the DOM markup is really simple though!
-
-            (cut to a chrome inspector shot of just the canvas)
-
-            So it's actually really quick for React to say "Nope, nothing changed here, no DOM mutation necessary"
-
-            That said, it's still not free. At Khan Academy, we test on cheap Chromebooks, and this animation works pretty well... but if you really need to eke out every drop of performance, you can sneak around React and manage updates yourself.
-          `}
-        >
-          <Heading textColor="red">This sounds expensive...</Heading>
-        </Slide>
-
-        <Slide>TODO: A quick look at Confetti sans React</Slide>
 
         {/*
 
@@ -1069,12 +1094,9 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-
-            <Heading size={4} textColor="secondary">
-            <a href="https://css-houdini.rocks"></a>
-              https://css-houdini.rocks
-          </a>
-            </Heading>
+          <Heading size={4} textColor="secondary">
+            <a href="https://css-houdini.rocks">https://css-houdini.rocks</a>
+          </Heading>
           <br />
           <br />
           By <a href="https://twitter.com/iamvdo">@iamvdo</a>

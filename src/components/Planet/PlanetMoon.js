@@ -62,18 +62,12 @@ class PlanetMoon extends Component<Props> {
       <Wrapper planetSize={planetSize} tilt={tilt} offset={offset} size={size}>
         <Orbit innerRef={node => (this.node = node)}>
           <Moon size={size}>
-            <Top color={colorObj.hexString()} radius={size / 2} />
-            <Back color={colorObj.darken(0.25).hexString()} radius={size / 2} />
-            <Front color={colorObj.darken(0.1).hexString()} radius={size / 2} />
-            <Bottom
-              color={colorObj.darken(0.5).hexString()}
-              radius={size / 2}
-            />
-            <Left color={colorObj.darken(0.15).hexString()} radius={size / 2} />
-            <Right
-              color={colorObj.darken(0.15).hexString()}
-              radius={size / 2}
-            />
+            <Top color={colorObj.string()} radius={size / 2} />
+            <Back color={colorObj.darken(0.25).string()} radius={size / 2} />
+            <Front color={colorObj.darken(0.1).string()} radius={size / 2} />
+            <Bottom color={colorObj.darken(0.5).string()} radius={size / 2} />
+            <Left color={colorObj.darken(0.15).string()} radius={size / 2} />
+            <Right color={colorObj.darken(0.15).string()} radius={size / 2} />
           </Moon>
         </Orbit>
       </Wrapper>
