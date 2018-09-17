@@ -58,6 +58,7 @@ class File extends PureComponent {
             )
             rotate(${props.rotation}rad)`,
           `,
+          willChange: 'transform',
         }}
       >
         <img src={fileSrc} />

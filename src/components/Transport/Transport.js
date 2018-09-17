@@ -38,12 +38,20 @@ class Transport extends Component<Props, State> {
     switch (status) {
       case 'closed':
         return {
-          transform: `translate(${from.left}px, ${from.top}px) scale(0)`,
+          // transform: `translate(${from.left}px, ${from.top}px) scale(0)`,
+          left: from.right,
+          top: from.bottom,
+          width: 0,
+          height: 0,
         };
 
       case 'opening': {
         return {
-          transform: `translate(${from.left}px, ${from.top}px) scale(1)`,
+          // transform: `translate(${from.left}px, ${from.top}px) scale(1)`,
+          left: from.right,
+          top: from.bottom,
+          width: 100,
+          height: 200,
         };
       }
 
