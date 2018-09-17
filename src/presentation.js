@@ -58,6 +58,7 @@ import windows98InstallSrc from './assets/windows-98-install.gif';
 import windowsXPInstallSrc from './assets/windows-xp-install.gif';
 import mapSrc from './assets/map.png';
 import serverLoadSrc from './assets/server-load.mp4';
+import netscapeSrc from './assets/netscape.jpg';
 import netscapeNSrc from './assets/netscape-n.gif';
 import canvasDomSrc from './assets/canvas-dom.png';
 import seriousOffice1Src from './assets/serious-office-1.jpg';
@@ -133,6 +134,7 @@ preloader({
   windows98InstallSrc,
   windowsXPInstallSrc,
   mapSrc,
+  netscapeSrc,
   netscapeNSrc,
   serverLoadSrc,
   canvasDomSrc,
@@ -313,9 +315,13 @@ export default class Presentation extends React.Component {
           <SectionStart
             subtitle="Example 1"
             title={
-              <FakeLoadFor duration={4000}>Loading Indicators</FakeLoadFor>
+              <FakeLoadFor duration={3000}>Loading Indicators</FakeLoadFor>
             }
           />
+        </Slide>
+
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={netscapeSrc} />
         </Slide>
 
         <Slide bgColor="secondary" transition={['none']}>
@@ -522,210 +528,9 @@ export default class Presentation extends React.Component {
 
 
         */}
-        <Slide bgColor="teal">
-          <SectionStart subtitle="Example 2" title="Confetti" />
-        </Slide>
-
-        <Slide bgColor="secondary">
-          <img src={confettiMockupSrc} style={{ width: '100%' }} />
-        </Slide>
-
-        <Slide bgColor="secondary" transition={['none']}>
-          <video
-            autoPlay
-            loop
-            src={khanConfettiSrc}
-            style={{ width: '100%' }}
-          />
-        </Slide>
-
-        <Slide>
-          <ConfettiManager />
-        </Slide>
-
-        <CodeSlide
-          bgColor="secondary"
-          lang="jsx"
-          code={require('./code/Canvas.example')}
-          ranges={[
-            { loc: [0], title: '<Canvas />' },
-            { loc: [3, 9] },
-            {
-              loc: [7, 8],
-              note: 'A render prop, but for Canvas',
-            },
-            { loc: [36, 46] },
-            { loc: [10, 17] },
-            { loc: [18, 21] },
-            {
-              loc: [22, 35],
-              note: 'Scaling for HiDPI (retina) displays',
-            },
-            { loc: [36, 46] },
-          ]}
-        />
-
-        <Slide>
-          <ComponentPlayground
-            code={require('./code/CanvasDemo.example')}
-            theme="external"
-            scope={{ Canvas }}
-          />
-        </Slide>
-
-        <Slide>
-          <ComponentPlayground
-            code={require('./code/CanvasAnimation.example')}
-            theme="external"
-            scope={{ Canvas, Motion, spring }}
-          />
-        </Slide>
-
-        <Slide
-          bgColor="secondary"
-          transition={[null]}
-          notes={`
-            This may seem prohibitively expensive from a performance standpoint. Because we're re-rendering on every frame, we're asking React to do a whole update every 16 milliseconds, eating up precious time.
-
-            The expensive part of a React re-render is the reconciliation process, where it tries to figure out what's changed in the DOM and update the DOM to match its own understanding. In our case, the DOM markup is really simple though!
-
-            (cut to a chrome inspector shot of just the canvas)
-
-            So it's actually really quick for React to say "Nope, nothing changed here, no DOM mutation necessary"
-
-            That said, it's still not free. At Khan Academy, we test on cheap Chromebooks, and this animation works pretty well... but if you really need to eke out every drop of performance, you can sneak around React and manage updates yourself.
-          `}
-        >
-          <Heading textColor="red">This sounds expensive...</Heading>
-        </Slide>
-
-        <Slide>
-          <img src={canvasDomSrc} style={{ width: '100%' }} />
-        </Slide>
-
-        <CodeSlide
-          bgColor="secondary"
-          lang="jsx"
-          code={require('./code/Confetti.example')}
-          ranges={[
-            {
-              loc: [0],
-              title: '<Confetti />',
-              note: '✂️ Abridged Version ✂️',
-            },
-            { loc: [0, 1] },
-            { loc: [2, 4] },
-            { loc: [5, 14] },
-            { loc: [15, 19] },
-            { loc: [21, 24] },
-
-            // Render
-            { loc: [83, 84] },
-            { loc: [84, 89] },
-            { loc: [90, 101] },
-            { loc: [94, 95] },
-            { loc: [95, 99] },
-
-            // generateParticles
-            { loc: [37, 38] },
-            { loc: [38, 40] },
-            { loc: [40, 46] },
-            { loc: [47, 53] },
-
-            // Re-render
-            { loc: [94, 95] },
-
-            // draw
-            { loc: [67, 68] },
-            { loc: [68, 69] },
-            { loc: [70, 71] },
-            { loc: [72, 73] },
-            { loc: [73, 76] },
-            { loc: [77, 78] },
-            { loc: [79, 80] },
-            { loc: [79, 80], note: 'How does our animation loop start?' },
-
-            // cDU
-            { loc: [25, 36] },
-
-            // tick
-            { loc: [55, 56] },
-            { loc: [56, 57] },
-            { loc: [57, 59] },
-            { loc: [60, 64] },
-            { loc: [61, 62] },
-
-            // Render
-            { loc: [83, 101] },
-          ]}
-        />
-
-        <Slide>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-around',
-              alignItems: 'center',
-            }}
-          >
-            <div
-              dangerouslySetInnerHTML={{
-                __html: circleShapeFactory({
-                  size: 150,
-                  fill: convertHexColorToRgb('#63d9ea'),
-                }),
-              }}
-            />
-            <div
-              dangerouslySetInnerHTML={{
-                __html: triangleShapeFactory({
-                  size: 150,
-                  fill: convertHexColorToRgb('#ed5fa6'),
-                }),
-              }}
-            />
-            <div
-              dangerouslySetInnerHTML={{
-                __html: rectangleShapeFactory({
-                  width: 75,
-                  height: 150,
-                  fill: convertHexColorToRgb('#f4d345'),
-                }),
-              }}
-            />
-            <div
-              dangerouslySetInnerHTML={{
-                __html: zigZagShapeFactory({
-                  size: 75,
-                  fill: convertHexColorToRgb('#26edd5'),
-                }),
-              }}
-            />
-          </div>
-        </Slide>
-
-        <Slide bgColor="secondary">
-          <FullscreenImage src={seriousOffice1Src} />
-        </Slide>
-        <Slide bgColor="secondary" transition={['none']}>
-          <FullscreenImage src={seriousOffice2Src} />
-        </Slide>
-        <Slide bgColor="secondary" transition={['none']}>
-          <FullscreenImage src={seriousOffice3Src} />
-        </Slide>
-
-        {/*
-
-
-
-          PART III
-
-
-
-        */}
 
         <Slide bgColor="teal">
-          <SectionStart subtitle="Example 3" title="Email Client" />
+          <SectionStart subtitle="Example 2" title="Email Client" />
         </Slide>
 
         <Slide bgColor="secondary" textColor="primary">

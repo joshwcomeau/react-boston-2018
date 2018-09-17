@@ -50,12 +50,9 @@ class Foldable extends PureComponent<Props> {
           foldHeight={✂️}
         >
           <HideOverflow>
-            <TopFoldContents
-              foldHeight={✂️}
-              dangerouslySetInnerHTML={{
-                __html: this.node.outerHTML,
-              }}
-            />
+            <TopFoldContents foldHeight={✂️}>
+              {children}
+            </TopFoldContents>
           </HideOverflow>
         </TopFold>
 
@@ -66,10 +63,9 @@ class Foldable extends PureComponent<Props> {
           <HideOverflow>
             <MiddleFoldContents
               offsetTop={✂️}
-              dangerouslySetInnerHTML={{
-                __html: this.node.outerHTML,
-              }}
-            />
+            >
+              {children}
+            </MiddleFoldContents>
           </HideOverflow>
         </MiddleFold>
 
@@ -81,10 +77,9 @@ class Foldable extends PureComponent<Props> {
           <HideOverflow>
             <BottomFoldContents
               offsetTop={✂️}
-              dangerouslySetInnerHTML={{
-                __html: this.node.outerHTML,
-              }}
-            />
+            >
+              {children}
+            </BottomFoldContents>
           </HideOverflow>
           <BottomFoldBack />
         </BottomFold>
