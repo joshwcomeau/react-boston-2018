@@ -64,6 +64,7 @@ import canvasDomSrc from './assets/canvas-dom.png';
 import seriousOffice1Src from './assets/serious-office-1.jpg';
 import seriousOffice2Src from './assets/serious-office-2.jpg';
 import seriousOffice3Src from './assets/serious-office-3.jpg';
+import monolistSrc from './assets/monolist.gif';
 
 import FullscreenImage from './components/FullscreenImage';
 import ConfettiManager from './components/ConfettiManager';
@@ -141,6 +142,7 @@ preloader({
   seriousOffice1Src,
   seriousOffice2Src,
   seriousOffice3Src,
+  monolistSrc,
 });
 
 // HACK: Spectacle applies a `transform: scale(1)` to all slides.
@@ -519,6 +521,22 @@ export default class Presentation extends React.Component {
           </Centered>
         </Slide>
 
+        <Slide>
+          <Heading textColor="secondary" size={3}>
+            I know what some of you are thinking...
+          </Heading>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <FullscreenImage src={seriousOffice1Src} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={seriousOffice2Src} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={seriousOffice3Src} />
+        </Slide>
+
         {/*
 
 
@@ -810,6 +828,20 @@ export default class Presentation extends React.Component {
 
         <Slide bgColor="teal">
           <SectionStart title="Conclusion" />
+        </Slide>
+
+        <Slide>
+          <Heading textColor="pink">The world needs more whimsy.</Heading>
+        </Slide>
+
+        <Slide>
+          <Heading>There's a business case for this, too.</Heading>
+        </Slide>
+
+        <Slide>Patreon confetti (GIF or link to article)</Slide>
+
+        <Slide>
+          <FullscreenImage src={monolistSrc} />
         </Slide>
 
         <Slide
