@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import { getCloudPathFromPoints } from './Planet.helpers';
-import Orbit from './Orbit';
+import RotateAroundPlanet from './RotateAroundPlanet';
 
 type Shape = {
   rows: number,
@@ -60,7 +60,7 @@ class PlanetCloud extends Component<Props> {
 
     return (
       <Wrapper opacity={opacity} offset={offset} rotation={rotation}>
-        <Orbit
+        <RotateAroundPlanet
           planetSize={planetSize}
           duration={orbitDuration}
           delay={orbitDelay}
@@ -68,7 +68,7 @@ class PlanetCloud extends Component<Props> {
           <svg width={width} height={height} viewBox={`0 0 ${columns} ${rows}`}>
             <path d={path} fill={color} />
           </svg>
-        </Orbit>
+        </RotateAroundPlanet>
       </Wrapper>
     );
   }

@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import Orbit from './Orbit';
+import RotateAroundPlanet from './RotateAroundPlanet';
 
 type Props = {
   planetSize: number,
@@ -21,7 +21,7 @@ class EarthContinents extends Component<Props> {
 
     return (
       <Wrapper style={{ width: planetSize, height: planetSize }}>
-        <Orbit
+        <RotateAroundPlanet
           planetSize={planetSize}
           duration={29000}
           style={{ width: '100%', height: '100%' }}
@@ -131,7 +131,7 @@ class EarthContinents extends Component<Props> {
               />
             </Landmass>
           ))}
-        </Orbit>
+        </RotateAroundPlanet>
       </Wrapper>
     );
   }

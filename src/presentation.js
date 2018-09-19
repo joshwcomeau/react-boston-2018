@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {
-  CodePane,
-  ComponentPlayground,
-  Deck,
-  Heading,
-  Slide,
-  Text,
-} from 'spectacle';
+import { CodePane, Deck, Heading, Slide, Text } from 'spectacle';
 import { injectGlobal } from 'styled-components';
 import createTheme from 'spectacle/lib/themes/default';
 import preloader from 'spectacle/lib/utils/preloader';
 import CodeSlide from 'spectacle-code-slide';
-import { Motion, spring } from 'react-motion';
 
 import { COLORS } from './constants';
 
@@ -52,7 +44,7 @@ import khanSpinnerWobbleSrc from './assets/khan-spinner-wobble.gif';
 import performanceMattersSrc from './assets/performance-matters.png';
 import guppyIconSrc from './assets/guppy-icon.png';
 import guppyIntroSrc from './assets/guppy-intro.mp4';
-import guppyOriginalInstallSrc from './assets/guppy-before.mp4';
+import guppyOriginalInstallSrc from './assets/guppy-before-trimmed.mp4';
 import guppyWhimsicalInstallSrc from './assets/guppy-after.mp4';
 import windows98InstallSrc from './assets/windows-98-install.gif';
 import windowsXPInstallSrc from './assets/windows-xp-install.gif';
@@ -64,11 +56,12 @@ import canvasDomSrc from './assets/canvas-dom.png';
 import seriousOffice1Src from './assets/serious-office-1.jpg';
 import seriousOffice2Src from './assets/serious-office-2.jpg';
 import seriousOffice3Src from './assets/serious-office-3.jpg';
+import seriousOffice4Src from './assets/office-mean-boss.jpg';
+import seriousOffice5Src from './assets/youre-fired.jpg';
+import fintechSrc from './assets/fintech-2.jpg';
 import monolistSrc from './assets/monolist.gif';
 
 import FullscreenImage from './components/FullscreenImage';
-import ConfettiManager from './components/ConfettiManager';
-import Canvas from './components/Canvas';
 import Confetti from './components/Confetti';
 import Caption from './components/Caption';
 import FoldConcept from './components/FoldConcept';
@@ -79,13 +72,6 @@ import Earth from './components/Earth';
 import WhimsicalInstaller from './components/WhimsicalInstaller';
 
 import Spacer from './components/Spacer';
-import {
-  circleShapeFactory,
-  triangleShapeFactory,
-  rectangleShapeFactory,
-  zigZagShapeFactory,
-} from './components/Confetti/confetti-shapes';
-import { convertHexColorToRgb } from './components/Confetti/Confetti.helpers';
 import Title from './slides/Title';
 import SectionStart from './slides/SectionStart';
 import WishTheInternet from './slides/WishTheInternet';
@@ -142,6 +128,9 @@ preloader({
   seriousOffice1Src,
   seriousOffice2Src,
   seriousOffice3Src,
+  seriousOffice4Src,
+  seriousOffice5Src,
+  fintechSrc,
   monolistSrc,
 });
 
@@ -440,7 +429,47 @@ export default class Presentation extends React.Component {
           <FullscreenImage src={mapSrc} />
         </Slide>
 
+        <Slide>
+          <Centered
+            style={{
+              height: 600,
+            }}
+          >
+            <Earth size={200} />
+          </Centered>
+        </Slide>
+
+        <CodeSlide
+          bgColor="secondary"
+          lang="jsx"
+          code={require('./code/RotateAroundPlanet.example')}
+          ranges={[
+            { loc: [0, 1], title: '<RotateAroundPlanet />' },
+            { loc: [1, 7] },
+            { loc: [8, 12] },
+
+            // Render
+            { loc: [42, 43] },
+            { loc: [43, 49] },
+            { loc: [50, 55] },
+
+            // componentDidMount
+            { loc: [13, 14] },
+            { loc: [14, 19] },
+            { loc: [20, 21] },
+            { loc: [21, 25] },
+            { loc: [25, 29] },
+            { loc: [30, 35] },
+            { loc: [36, 40] },
+
+            { loc: [42, 55] },
+          ]}
+        />
+
         <Slide bgColor="secondary">
+          <Heading textColor="#FFC400" size={3}>
+            File Rotation
+          </Heading>
           <Centered>
             <WhimsicalInstaller
               isRunning
@@ -535,6 +564,15 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide bgColor="secondary" transition={['none']}>
           <FullscreenImage src={seriousOffice3Src} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={seriousOffice4Src} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={seriousOffice5Src} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={fintechSrc} />
         </Slide>
 
         {/*

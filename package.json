@@ -106,6 +106,9 @@
   "babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      "babel-plugin-styled-components"
     ]
   },
   "eslintConfig": {
@@ -116,6 +119,7 @@
     "@storybook/addon-links": "^3.4.10",
     "@storybook/addons": "^3.4.10",
     "@storybook/react": "^3.4.10",
+    "babel-plugin-styled-components": "1.7.1",
     "raw-loader": "^0.5.1"
   }
 }
