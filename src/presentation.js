@@ -70,6 +70,7 @@ import Underlined from './components/Underlined';
 import FakeLoadFor from './components/FakeLoadFor';
 import Earth from './components/Earth';
 import WhimsicalInstaller from './components/WhimsicalInstaller';
+import Transport from './components/Transport/TransportCodeSandbox';
 
 import Spacer from './components/Spacer';
 import Title from './slides/Title';
@@ -179,6 +180,10 @@ export default class Presentation extends React.Component {
           Single blank slide, so that the second slide has a fade-in effect
         */}
         <Slide />
+
+        <Slide>
+          <Transport />
+        </Slide>
 
         <Slide>
           <WishTheInternet />

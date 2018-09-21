@@ -96,9 +96,9 @@ class Wrapper extends Component<Props, State> {
             {this.state.from &&
               this.state.to && (
                 <Transport
-                  status={this.state.status}
-                  from={this.state.from}
-                  to={this.state.to}
+                  isOpen={this.state.status === 'open'}
+                  from={this.state.from.getBoundingClientRect()}
+                  to={this.state.to.getBoundingClientRect()}
                   windowWidth={windowWidth}
                   windowHeight={windowHeight}
                 >
