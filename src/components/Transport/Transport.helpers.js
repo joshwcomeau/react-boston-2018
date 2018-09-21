@@ -24,6 +24,8 @@ export const getTranslatePostion = ({
   const childCenter = getRectCenter(childRect);
   const targetCenter = getRectCenter(targetRect);
 
+  console.log(quadrant);
+
   switch (quadrant) {
     case 1:
       // prettier-ignore
@@ -40,7 +42,6 @@ export const getTranslatePostion = ({
 
     case 2:
       // prettier-ignore
-      console.log(targetRect.left, childRect.width);
       return {
         translateX:
           alignedTo === 'corner'

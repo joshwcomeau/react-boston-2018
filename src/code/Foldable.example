@@ -1,7 +1,7 @@
 class Foldable extends PureComponent<Props> {
   static propTypes = {
     isFolded: PropTypes.bool,
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
     duration: PropTypes.number,
   }
 
@@ -45,43 +45,28 @@ class Foldable extends PureComponent<Props> {
           height,
         }}
       >
-        <TopFold
-          duration={duration}
-          foldHeight={✂️}
-        >
+        <TopFold>
           <HideOverflow>
-            <TopFoldContents foldHeight={✂️}>
+            <TopFoldContents>
               {children}
             </TopFoldContents>
           </HideOverflow>
         </TopFold>
 
-        <MiddleFold
-          foldHeight={✂️}
-          offsetTop={✂️}
-        >
+        <MiddleFold>
           <HideOverflow>
-            <MiddleFoldContents
-              offsetTop={✂️}
-            >
+            <MiddleFoldContents>
               {children}
             </MiddleFoldContents>
           </HideOverflow>
         </MiddleFold>
 
-        <BottomFold
-          duration={duration}
-          foldHeight={✂️}
-          offsetTop={✂️}
-        >
+        <BottomFold>
           <HideOverflow>
-            <BottomFoldContents
-              offsetTop={✂️}
-            >
+            <BottomFoldContents>
               {children}
             </BottomFoldContents>
           </HideOverflow>
-          <BottomFoldBack />
         </BottomFold>
       </Wrapper>
     );

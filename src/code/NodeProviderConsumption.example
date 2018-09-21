@@ -2,7 +2,7 @@ class App extends Component {
   render() {
     return (
       <NodeProvider>
-        <InboxHeading />
+        {/* Rest of your app here */}
       </NodeProvider>
     );
   }

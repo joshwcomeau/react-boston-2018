@@ -1,7 +1,8 @@
-class File extends PureComponent {
+class Projectile extends PureComponent {
   static propTypes = {
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired,
+    children: PropTypes.node,
   }
 
   previousCoordinates = [];
@@ -41,7 +42,7 @@ class File extends PureComponent {
   };
 
   render() {
-    const { x, y } = this.props;
+    const { x, y, children } = this.props;
 
     const rotation = this.getFileRotation();
 
@@ -61,10 +62,10 @@ class File extends PureComponent {
           willChange: 'transform',
         }}
       >
-        <img src={fileSrc} />
+        {children}
       </div>
     );
   }
 }
 
-export default File;
+export default Projectile;

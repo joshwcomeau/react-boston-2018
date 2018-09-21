@@ -28,10 +28,6 @@ class Transport extends Component<Props, State> {
     reset: false,
   };
 
-  // static getDerivedStateFromProps(props: Props) {
-
-  // }
-
   getQuadrant(rect): Quadrant {
     // When expanding from something, we want to use its "opposite" corner.
     // Imagine we divide the screen into quadrants:
@@ -76,21 +72,6 @@ class Transport extends Component<Props, State> {
     }
   }
 
-  getCornerPositionForQuadrant = (quadrant: Quadrant) => {
-    switch (quadrant) {
-      case 1:
-        return ['right', 'bottom'];
-      case 2:
-        return ['left', 'bottom'];
-      case 3:
-        return ['right', 'top'];
-      case 4:
-        return ['left', 'top'];
-      default:
-        throw new Error('Unrecognized quadrant');
-    }
-  };
-
   getChildPosition = () => {
     const { isOpen, from, to } = this.props;
 
@@ -103,6 +84,8 @@ class Transport extends Component<Props, State> {
 
     const quadrant = this.getQuadrant(from);
     const childRect = this.childWrapperNode.getBoundingClientRect();
+    childRect.width = 250;
+    childRect.height = 450;
 
     // TODO: Can probably figure out `retracting` by just changing `alignedTo`
     // when `from` === `to`
@@ -131,6 +114,8 @@ class Transport extends Component<Props, State> {
       translateY: toY,
       scale: isOpen ? 1 : 0,
     };
+
+    console.log(fromPosition, toPosition);
 
     return { fromPosition, toPosition };
   };

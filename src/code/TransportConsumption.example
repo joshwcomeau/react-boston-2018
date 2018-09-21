@@ -10,11 +10,6 @@ class ComposeEmail extends Component {
   render() {
     const { status } = this.state;
 
-    const transportStatus =
-      status === 'composing'
-        ? 'open'
-        : 'closed';
-
     return (
       <NodeConsumer>
         {({
@@ -22,9 +17,13 @@ class ComposeEmail extends Component {
           outboxHeading,
         }) => (
           <Transport
-            status={transportStatus}
             fromNode={composeBtn}
             toNode={outboxHeading}
+            status={
+              status === 'composing'
+                ? 'open'
+                : 'closed'
+            }
           >
             <Foldable
               isFolded={status === 'send'}

@@ -4,7 +4,7 @@ const NodeContext = React.createContext(
   'node'
 );
 
-class NodeProvider extends Component {
+export class NodeProvider extends Component {
   state = {
     nodes: {},
     refCapturer: id => node => {
@@ -30,5 +30,3 @@ class NodeProvider extends Component {
 
 export const NodeConsumer =
   NodeContext.Consumer;
-
-export default NodeProvider;

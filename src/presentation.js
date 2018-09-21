@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { CodePane, Deck, Heading, Slide, Text } from 'spectacle';
+import { CodePane, Deck, Heading, Slide, Text, BlockQuote } from 'spectacle';
 import { injectGlobal } from 'styled-components';
 import createTheme from 'spectacle/lib/themes/default';
 import preloader from 'spectacle/lib/utils/preloader';
@@ -60,17 +60,21 @@ import seriousOffice4Src from './assets/office-mean-boss.jpg';
 import seriousOffice5Src from './assets/youre-fired.jpg';
 import fintechSrc from './assets/fintech-2.jpg';
 import monolistSrc from './assets/monolist.gif';
+import whyNodeProviderSrc from './assets/why-node-provider.gif';
+import rftLogoSrc from './assets/rft-logo.gif';
+import patreonGrowthSrc from './assets/patreon-growth.png';
+import reactSpringSrc from './assets/react-spring.gif';
+import reactFlipToolkitSrc from './assets/react-flip-toolkit.gif';
+import poseDemoSrc from './assets/pose-demo.gif';
 
 import FullscreenImage from './components/FullscreenImage';
 import Confetti from './components/Confetti';
 import Caption from './components/Caption';
 import FoldConcept from './components/FoldConcept';
-import Foldable from './components/Foldable';
 import Underlined from './components/Underlined';
 import FakeLoadFor from './components/FakeLoadFor';
 import Earth from './components/Earth';
 import WhimsicalInstaller from './components/WhimsicalInstaller';
-import Transport from './components/Transport/TransportCodeSandbox';
 
 import Spacer from './components/Spacer';
 import Title from './slides/Title';
@@ -133,6 +137,12 @@ preloader({
   seriousOffice5Src,
   fintechSrc,
   monolistSrc,
+  whyNodeProviderSrc,
+  rftLogoSrc,
+  patreonGrowthSrc,
+  reactSpringSrc,
+  reactFlipToolkitSrc,
+  poseDemoSrc,
 });
 
 // HACK: Spectacle applies a `transform: scale(1)` to all slides.
@@ -180,10 +190,6 @@ export default class Presentation extends React.Component {
           Single blank slide, so that the second slide has a fade-in effect
         */}
         <Slide />
-
-        <Slide>
-          <Transport />
-        </Slide>
 
         <Slide>
           <WishTheInternet />
@@ -462,8 +468,8 @@ export default class Presentation extends React.Component {
             { loc: [13, 14] },
             { loc: [14, 19] },
             { loc: [20, 21] },
-            { loc: [21, 25] },
-            { loc: [25, 29] },
+            { loc: [21, 24] },
+            { loc: [24, 28] },
             { loc: [30, 35] },
             { loc: [36, 40] },
 
@@ -491,24 +497,24 @@ export default class Presentation extends React.Component {
           code={require('./code/FileOriginal.example')}
           ranges={[
             { loc: [0, 1], title: '<File />' },
-            { loc: [1, 5] },
-            { loc: [6, 7] },
-            { loc: [8, 9] },
-            { loc: [9, 13] },
-            { loc: [15, 16] },
+            { loc: [1, 6] },
+            { loc: [7, 8] },
+            { loc: [9, 10] },
+            { loc: [10, 14] },
 
-            { loc: [16, 19] },
-            { loc: [20, 21] },
-            { loc: [22, 26] },
-            { loc: [27, 31] },
+            { loc: [16, 17] },
+            { loc: [17, 20] },
+            { loc: [21, 22] },
+            { loc: [23, 27] },
+            { loc: [28, 32] },
 
-            { loc: [33, 34] },
             { loc: [34, 35] },
-            { loc: [36, 37] },
-            { loc: [39, 41] },
-            { loc: [41, 44] },
-            { loc: [44, 45] },
-            { loc: [47, 48] },
+            { loc: [35, 36] },
+            { loc: [37, 38] },
+            { loc: [40, 42] },
+            { loc: [42, 45] },
+            { loc: [45, 46] },
+            { loc: [48, 49] },
           ]}
         />
 
@@ -524,23 +530,23 @@ export default class Presentation extends React.Component {
           code={require('./code/FileFinal.example')}
           ranges={[
             { loc: [0, 1], title: '<File /> v2' },
-            { loc: [1, 5] },
-            { loc: [6, 7] },
-            { loc: [8, 9] },
-            { loc: [9, 13] },
-            { loc: [14, 19] },
+            { loc: [1, 6] },
+            { loc: [7, 8] },
+            { loc: [9, 10] },
+            { loc: [10, 14] },
+            { loc: [15, 20] },
 
-            { loc: [21, 22] },
-            { loc: [22, 27] },
-            { loc: [31, 32] },
-            { loc: [33, 40] },
+            { loc: [22, 23] },
+            { loc: [23, 28] },
+            { loc: [31, 33] },
+            { loc: [34, 41] },
 
-            { loc: [42, 43] },
-            { loc: [43, 46] },
-            { loc: [50, 53] },
-            { loc: [53, 59] },
-            { loc: [60, 61] },
-            { loc: [63, 64] },
+            { loc: [43, 44] },
+            { loc: [44, 47] },
+            { loc: [51, 54] },
+            { loc: [54, 60] },
+            { loc: [61, 62] },
+            { loc: [64, 65] },
           ]}
         />
 
@@ -555,6 +561,8 @@ export default class Presentation extends React.Component {
           </Centered>
         </Slide>
 
+        <Slide />
+
         <Slide>
           <Heading textColor="secondary" size={3}>
             I know what some of you are thinking...
@@ -563,6 +571,9 @@ export default class Presentation extends React.Component {
 
         <Slide bgColor="secondary">
           <FullscreenImage src={seriousOffice1Src} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={fintechSrc} />
         </Slide>
         <Slide bgColor="secondary" transition={['none']}>
           <FullscreenImage src={seriousOffice2Src} />
@@ -575,9 +586,6 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide bgColor="secondary" transition={['none']}>
           <FullscreenImage src={seriousOffice5Src} />
-        </Slide>
-        <Slide bgColor="secondary" transition={['none']}>
-          <FullscreenImage src={fintechSrc} />
         </Slide>
 
         {/*
@@ -652,17 +660,16 @@ export default class Presentation extends React.Component {
             curmudgeons, but also folks with vestibular disorders.
           `}
         >
-          <Heading textFont="secondary" textColor="green" size={3}>
-            Write self-disabling animations
+          <Heading textColor="green" size={3}>
+            Simplify over time
           </Heading>
+        </Slide>
 
-          <br />
-          <br />
-
-          <Text textColor="primary">
+        <Slide bgColor="secondary" transition={['none']}>
+          <Heading textColor="primary" size={3}>
             Whimsy is supposed to be{' '}
             <em style={{ color: COLORS.yellow[500] }}>unexpected</em>.
-          </Text>
+          </Heading>
         </Slide>
 
         <Slide bgColor="deepPurple" textColor="primary">
@@ -689,9 +696,9 @@ export default class Presentation extends React.Component {
             { loc: [4, 5] },
             { loc: [7, 10] },
 
-            { loc: [94, 103] },
-            { loc: [97, 98] },
-            { loc: [98, 100] },
+            { loc: [74, 83] },
+            { loc: [77, 78] },
+            { loc: [78, 80] },
 
             { loc: [11, 12] },
             { loc: [23, 24] },
@@ -702,30 +709,34 @@ export default class Presentation extends React.Component {
             { loc: [28, 29] },
             { loc: [31, 37] },
             { loc: [38, 46] },
-            { loc: [47, 60] },
-            { loc: [54, 57] },
-            { loc: [61, 74] },
-            { loc: [75, 90] },
+            { loc: [47, 54] },
+            { loc: [50, 51] },
+            { loc: [55, 62] },
+            { loc: [58, 59] },
+            { loc: [63, 70] },
+            { loc: [66, 67] },
 
-            { loc: [94, 103] },
+            { loc: [74, 83] },
 
-            { loc: [105, 222] },
-            { loc: [160, 222] },
-            { loc: [200, 222] },
+            { loc: [85, 97] },
+            { loc: [98, 110] },
+
+            { loc: [111, 131] },
+            { loc: [132, 157] },
+            { loc: [158, 180] },
+            { loc: [180, 200] },
           ]}
         />
 
         <Slide>
           <Heading size={2} textColor="pink" textFont="secondary">
-            React is Awesome
+            Yay components!
           </Heading>
           <br />
           <br />
           <Text>
-            This effect is accomplished by CSS, but it's messy.
-            <br />
-            With React, we can abstract this into a <Foldable /> component with
-            a beautiful API.
+            Make a really nice API that encapsulates
+            <br />a bunch of tricky CSS.
           </Text>
         </Slide>
 
@@ -765,21 +776,17 @@ export default class Presentation extends React.Component {
           <p>Orchestrate motion between DOM nodes</p>
         </Slide>
 
-        <CodeSlide
-          bgColor="secondary"
-          lang="jsx"
-          transition={['none']}
-          code={require('./code/NodeProviderProps.example')}
-          ranges={[
-            {
-              loc: [0],
-              title: '<NodeProvider> data',
-            },
-            { loc: [1, 7] },
-          ]}
-        />
+        <Slide>
+          <Heading size={3} textColor="secondary">
+            NodeProvider
+          </Heading>
+          <br />
+          <br />
 
-        <CodeSlide
+          <img src={whyNodeProviderSrc} style={{ width: '100%' }} />
+        </Slide>
+
+        {/* <CodeSlide
           bgColor="secondary"
           lang="jsx"
           transition={['none']}
@@ -801,9 +808,9 @@ export default class Presentation extends React.Component {
             // render
             { loc: [19, 28] },
             // exports
-            { loc: [30, 34] },
+            { loc: [30, 32] },
           ]}
-        />
+        /> */}
 
         <CodeSlide
           transition={['none']}
@@ -850,14 +857,78 @@ export default class Presentation extends React.Component {
             { loc: [1, 8] },
 
             { loc: [9, 10] },
-            { loc: [12, 16] },
-
-            { loc: [17, 23] },
-            { loc: [23, 28] },
-            { loc: [28, 35] },
-            { loc: [17, 38] },
+            { loc: [12, 13] },
+            { loc: [13, 18] },
+            { loc: [18, 27] },
+            { loc: [21, 26] },
+            { loc: [27, 34] },
           ]}
         />
+
+        <Slide>
+          <Heading textColor="purple" size={2}>
+            Leverage the Ecosystem
+          </Heading>
+        </Slide>
+
+        <Slide>
+          <img src={rftLogoSrc} style={{ width: 450 }} />
+          <br />
+          <br />
+          <a href="https://codesandbox.io/s/k5kvk4l95">
+            codesandbox.io/s/k5kvk4l95
+          </a>
+          <br />
+          <br />
+          <Text>Thanks to Alex Holachek</Text>
+        </Slide>
+        <Slide>
+          <svg
+            width="450"
+            viewBox="0 0 613 192"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient
+                x1="8.5%"
+                y1="0%"
+                x2="8.5%"
+                y2="81.7%"
+                id="posepurple"
+              >
+                <stop stop-color="#ED00BB" offset="0%" />
+                <stop stop-color="#A100F6" offset="100%" />
+              </linearGradient>
+              <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="posered">
+                <stop stop-color="#FF1C68" offset="0%" />
+                <stop stop-color="#DB0068" offset="100%" />
+              </linearGradient>
+            </defs>
+            <g fill="none" fill-rule="evenodd">
+              <path
+                fill="url(#posepurple)"
+                transform="translate(0 -1)"
+                d="M17.2 33.1h61.6c32 0 48.8 21.2 48.8 47.6 0 30.2-21.9 57.5-59.8 57.5H44L38.8 190H.8L17.2 33.1zm56.5 35.7H51.4l-3.9 35.6h21.6c13 0 20.5-8.5 20.5-19.7 0-8-5-16-15.9-16zm140.5-38c42.5 0 74.7 31.3 74.7 72.3a89.4 89.4 0 0 1-90.1 89.2c-42.1 0-74.3-31.5-74.3-72.2 0-49.5 40-89.3 89.7-89.3zm-3 36.4c-25.8 0-48.3 22-48.3 49.2a38.7 38.7 0 0 0 38.9 39.6c25.3 0 48.7-22.1 48.7-49.3a39 39 0 0 0-39.3-39.5zm187.3-26.7l-4.1 37.3S375 66.5 350.2 66.5c-9 0-18.6 3.4-18.6 11.3 0 17.4 68.8 13.5 68.8 62.3 0 29.2-21.6 52.2-66.3 52.2-30.1 0-51.7-12.2-51.7-12.2l4.1-38.4s23.7 14.7 48.6 14.7c12.6 0 24.8-3.4 24.8-13.3 0-19.6-67-14.7-67-62.8 0-32.4 30-49.5 60.8-49.5a100 100 0 0 1 44.8 9.7zm121.2 113.8h-77l2.8-26h64.4l3.6-34.9h-64.4l2.6-24.6h75.6L531 33H417.4L401 190h115l3.6-35.7z"
+              />
+              <g transform="translate(549 -1)" fill="url(#posered)">
+                <path d="M31.6 1.7A31.9 31.9 0 0 0 0 34 31.9 31.9 0 0 0 31.6 66C48.2 66 61.7 53 63 36.5a23.2 23.2 0 0 1-12.4 3.4h-8.9l-2 19.6h-14l5.9-57.8z" />
+                <path d="M52.8 13.5c4 0 5.9 3 5.9 6 0 4.3-2.8 7.6-7.6 7.6h-8l1.4-13.6h8.3z" />
+              </g>
+            </g>
+          </svg>
+          <br />
+          <br />
+          <a href="https://codesandbox.io/s/81219qyo02">
+            codesandbox.io/s/81219qyo02
+          </a>
+
+          <br />
+          <br />
+          <Text>
+            Thanks to{' '}
+            <a href="https://twitter.com/AndaristRake">Mateusz Burzyński</a>
+          </Text>
+        </Slide>
 
         {/*
 
@@ -878,13 +949,108 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <Heading>There's a business case for this, too.</Heading>
+          <Heading textColor="secondary" size={6}>
+            There's a business case for this, too.
+          </Heading>
         </Slide>
 
-        <Slide>Patreon confetti (GIF or link to article)</Slide>
+        <Slide>
+          <img src={patreonGrowthSrc} />
+
+          <br />
+          <br />
+          <a
+            href="https://brianbalfour.com/essays/patreon-onboarding-growth"
+            style={{ fontSize: 16, color: '#777' }}
+          >
+            brianbalfour.com/essays/patreon-onboarding-growth
+          </a>
+        </Slide>
 
         <Slide>
           <FullscreenImage src={monolistSrc} />
+        </Slide>
+
+        <Slide>
+          <video
+            autoPlay
+            loop
+            src={khanConfettiSrc}
+            style={{
+              width: '100%',
+              margin: 'auto',
+            }}
+          />
+        </Slide>
+
+        <Slide>
+          <Heading textFont="secondary" textColor="purple" size={4}>
+            There's an
+          </Heading>
+          <Heading textFont="secondary" textColor="pink" size={1}>
+            incredible ecosystem
+          </Heading>
+          <Heading textFont="secondary" textColor="purple" size={4}>
+            of tools
+          </Heading>
+        </Slide>
+
+        <Slide>
+          <svg
+            width="450"
+            viewBox="0 0 613 192"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient
+                x1="8.5%"
+                y1="0%"
+                x2="8.5%"
+                y2="81.7%"
+                id="posepurple"
+              >
+                <stop stop-color="#ED00BB" offset="0%" />
+                <stop stop-color="#A100F6" offset="100%" />
+              </linearGradient>
+              <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="posered">
+                <stop stop-color="#FF1C68" offset="0%" />
+                <stop stop-color="#DB0068" offset="100%" />
+              </linearGradient>
+            </defs>
+            <g fill="none" fill-rule="evenodd">
+              <path
+                fill="url(#posepurple)"
+                transform="translate(0 -1)"
+                d="M17.2 33.1h61.6c32 0 48.8 21.2 48.8 47.6 0 30.2-21.9 57.5-59.8 57.5H44L38.8 190H.8L17.2 33.1zm56.5 35.7H51.4l-3.9 35.6h21.6c13 0 20.5-8.5 20.5-19.7 0-8-5-16-15.9-16zm140.5-38c42.5 0 74.7 31.3 74.7 72.3a89.4 89.4 0 0 1-90.1 89.2c-42.1 0-74.3-31.5-74.3-72.2 0-49.5 40-89.3 89.7-89.3zm-3 36.4c-25.8 0-48.3 22-48.3 49.2a38.7 38.7 0 0 0 38.9 39.6c25.3 0 48.7-22.1 48.7-49.3a39 39 0 0 0-39.3-39.5zm187.3-26.7l-4.1 37.3S375 66.5 350.2 66.5c-9 0-18.6 3.4-18.6 11.3 0 17.4 68.8 13.5 68.8 62.3 0 29.2-21.6 52.2-66.3 52.2-30.1 0-51.7-12.2-51.7-12.2l4.1-38.4s23.7 14.7 48.6 14.7c12.6 0 24.8-3.4 24.8-13.3 0-19.6-67-14.7-67-62.8 0-32.4 30-49.5 60.8-49.5a100 100 0 0 1 44.8 9.7zm121.2 113.8h-77l2.8-26h64.4l3.6-34.9h-64.4l2.6-24.6h75.6L531 33H417.4L401 190h115l3.6-35.7z"
+              />
+              <g transform="translate(549 -1)" fill="url(#posered)">
+                <path d="M31.6 1.7A31.9 31.9 0 0 0 0 34 31.9 31.9 0 0 0 31.6 66C48.2 66 61.7 53 63 36.5a23.2 23.2 0 0 1-12.4 3.4h-8.9l-2 19.6h-14l5.9-57.8z" />
+                <path d="M52.8 13.5c4 0 5.9 3 5.9 6 0 4.3-2.8 7.6-7.6 7.6h-8l1.4-13.6h8.3z" />
+              </g>
+            </g>
+          </svg>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <FullscreenImage src={poseDemoSrc} />
+        </Slide>
+
+        <Slide>
+          <img src={rftLogoSrc} style={{ width: 450 }} />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <FullscreenImage src={reactFlipToolkitSrc} />
+        </Slide>
+
+        <Slide>
+          <Heading size={4} textColor="secondary">
+            React Spring
+          </Heading>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <FullscreenImage src={reactSpringSrc} />
         </Slide>
 
         <Slide
@@ -1064,27 +1230,20 @@ if (prefersReducedMotion) {
           </Heading>
         </Slide>
 
-        <Slide>
-          <Heading textColor="green" textFont="secondary">
-            The Takeaway
-          </Heading>
-          <Spacer size={40} />
+        <Slide />
 
-          <Heading textColor="indigo" size={5}>
-            Animations and interactions are a key part of the user experience.
+        <Slide>
+          <Heading textColor="purple" size={5}>
+            It's getting easier than ever to create
           </Heading>
-          <Spacer size={20} />
-          <Heading textColor="deepPurple" size={5}>
-            There are really interesting unsolved problems here.
+
+          <Heading textColor="pink" size={3}>
+            delightful experiences.
           </Heading>
-          <Spacer size={20} />
-          <Heading textColor="pink" size={5}>
-            This area is poised to blow up, as new web technologies emerge.
-          </Heading>
-          <Spacer size={20} />
-          <Heading textColor="red" size={5}>
-            Come be a part of it, and expand your toolkit!
-          </Heading>
+        </Slide>
+
+        <Slide>
+          <Heading />
         </Slide>
 
         <Slide>
