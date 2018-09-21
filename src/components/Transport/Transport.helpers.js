@@ -1,5 +1,10 @@
 // @flow
 
+const getRectCenter = (rect: ClientRect) => ({
+  x: rect.left + rect.width / 2,
+  y: rect.top + rect.height / 2,
+});
+
 type GetTranslatePositionArgs = {
   quadrant: Quadrant,
   childRect: ClientRect,
@@ -16,33 +21,35 @@ export const getTranslatePostion = ({
   windowWidth = window.innerWidth,
   windowHeight = window.innerHeight,
 }: GetTranslatePositionArgs) => {
-  const augmentedChildRect = createAugmentedClientRect(childRect);
-  const augmentedTargetRect = createAugmentedClientRect(targetRect);
+  const childCenter = getRectCenter(childRect);
+  const targetCenter = getRectCenter(targetRect);
 
   switch (quadrant) {
     case 1:
+      // prettier-ignore
       return {
         translateX:
           alignedTo === 'corner'
-            ? augmentedTargetRect.right
-            : augmentedTargetRect.centerX - augmentedChildRect.width / 2,
+            ? targetRect.right
+            : targetCenter.x - childRect.width / 2,
         translateY:
           alignedTo === 'corner'
-            ? augmentedTargetRect.bottom
-            : augmentedTargetRect.centerY - augmentedChildRect.height / 2,
+            ? targetRect.bottom
+            : targetCenter.y - childRect.height / 2,
       };
 
     case 2:
+      // prettier-ignore
+      console.log(targetRect.left, childRect.width);
       return {
         translateX:
           alignedTo === 'corner'
-            ? augmentedTargetRect.fromBottomRight.left
-            : augmentedTargetRect.fromBottomRight.centerX -
-              augmentedChildRect.width / 2,
+            ? targetRect.left - childRect.width
+            : targetCenter.x,
         translateY:
           alignedTo === 'corner'
-            ? augmentedTargetRect.bottom
-            : augmentedTargetRect.centerY - augmentedChildRect.height / 2,
+            ? targetRect.bottom
+            : targetCenter.y - childRect.height / 2,
       };
 
     case 3:
@@ -55,7 +62,7 @@ export const getTranslatePostion = ({
         translateX:
           alignedTo === 'corner'
             ? augmentedTargetRect.right
-            : augmentedTargetRect.centerX - augmentedChildRect.width / 2,
+            : targetCenter.x - augmentedChildRect.width / 2,
       };
 
     case 4:

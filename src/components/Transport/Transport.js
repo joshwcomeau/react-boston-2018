@@ -7,6 +7,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Spring } from 'react-spring';
 
+import { getTranslatePostion } from './Transport.helpers';
+
 type Position = {
   translateX: number,
   translateY: number,
@@ -22,14 +24,13 @@ type Props = {
 
 class Transport extends Component<Props, State> {
   childWrapperNode: HTMLElement;
+  state = {
+    reset: false,
+  };
 
   // static getDerivedStateFromProps(props: Props) {
 
   // }
-
-  componentDidMount() {
-    this.childRect = this.childWrapperNode.getBoundingClientRect();
-  }
 
   getQuadrant(rect): Quadrant {
     // When expanding from something, we want to use its "opposite" corner.
@@ -93,57 +94,59 @@ class Transport extends Component<Props, State> {
   getChildPosition = () => {
     const { isOpen, from, to } = this.props;
 
-    if (!this.childRect) {
+    if (!this.childWrapperNode) {
       return {
         fromPosition: { translateX: 0, translateY: 0, scale: 0 },
         toPosition: { translateX: 0, translateY: 0, scale: 0 },
       };
     }
 
-    const quadrant = this.getQuadrant(this.childRect);
+    const quadrant = this.getQuadrant(from);
+    const childRect = this.childWrapperNode.getBoundingClientRect();
 
-    if (isOpen) {
-      const fromPosition = {
-        translateX: from.right,
-        translateY: from.bottom,
-        scale: 0,
-      };
+    // TODO: Can probably figure out `retracting` by just changing `alignedTo`
+    // when `from` === `to`
+    const { translateX: fromX, translateY: fromY } = getTranslatePostion({
+      quadrant,
+      childRect,
+      targetRect: from,
+      alignedTo: 'corner',
+    });
 
-      const toPosition = {
-        translateX: from.right,
-        translateY: from.bottom,
-        scale: 1,
-      };
+    const { translateX: toX, translateY: toY } = getTranslatePostion({
+      quadrant,
+      childRect,
+      targetRect: isOpen ? from : to,
+      alignedTo: isOpen ? 'corner' : 'center',
+    });
 
-      return { fromPosition, toPosition };
-    } else {
-      // If this is our initial state, closed, without a 'from', then we can
-      // simply set the `from`
-      const fromPosition = {
-        translateX: from.right,
-        translateY: from.bottom,
-        scale: 1,
-      };
+    const fromPosition = {
+      translateX: fromX,
+      translateY: fromY,
+      scale: isOpen ? 0 : 1,
+    };
 
-      const toPosition = {
-        translateX: to.left + to.width / 2,
-        translateY: to.top + to.height / 2,
-        scale: 0,
-      };
+    const toPosition = {
+      translateX: toX,
+      translateY: toY,
+      scale: isOpen ? 1 : 0,
+    };
 
-      return { fromPosition, toPosition };
-    }
+    return { fromPosition, toPosition };
   };
 
   render() {
-    const { children } = this.props;
+    const { children, isOpen } = this.props;
 
     const { fromPosition, toPosition } = this.getChildPosition();
 
-    console.log({ fromPosition, toPosition });
-
     return (
-      <Spring from={fromPosition} to={toPosition} reset>
+      <Spring
+        from={fromPosition}
+        to={toPosition}
+        reset={isOpen}
+        onRest={this.handleFinish}
+      >
         {({ translateX, translateY, scale }) => (
           <Wrapper
             innerRef={node => {
