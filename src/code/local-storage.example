@@ -1,0 +1,7 @@
+const numOfEmailsSent =
+  localStorage.getItem('num-of-emails-sent');
+
+const animationStyle =
+  numOfEmailsSent > 3
+    ? 'speedy'
+    : 'luxurious';

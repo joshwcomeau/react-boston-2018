@@ -41,13 +41,6 @@ class RotateAroundPlanet extends Component {
   }
 
   render() {
-    const {
-      duration,
-      delay,
-      planetSize,
-      children,
-    } = this.props;
-
     return (
       <div ref={node => this.node = node}>
         {children}

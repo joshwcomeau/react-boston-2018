@@ -1,3 +1,8 @@
+import {
+  NodeProvider,
+  NodeConsumer,
+} from '../NodeContext';
+
 class App extends Component {
   render() {
     return (

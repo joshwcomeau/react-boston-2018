@@ -1,12 +1,18 @@
-const InboxHeading = () => (
-  <h4 data-node-id="inbox-heading">
-    Inbox
-  </h4>
-);
+const inboxHeadingNode =
+  document.querySelector('.compose-btn');
 
-const SomewhereElse = () => {
-  const inboxHeadingNode =
-    document.querySelector(
-      '[data-node-id=inbox-heading]'
-    )
-};
+const clientRect =
+  inboxHeadingNode.getBoundingClientRect();
+
+/*
+clientRect is: {
+  top: 15,
+  left: 75,
+
+  width: 50,
+  height: 30,
+
+  right: 125,
+  bottom: 45,
+}
+*/

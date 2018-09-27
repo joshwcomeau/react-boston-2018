@@ -1,0 +1,18 @@
+const composeBtnNode =
+  document.querySelector('.compose-btn');
+
+const clientRect =
+  composeBtnNode.getBoundingClientRect();
+
+/*
+  clientRect is: {
+    top: 15,
+    left: 75,
+
+    width: 50,
+    height: 30,
+
+    right: 125,
+    bottom: 45,
+  }
+*/

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { CodePane, Deck, Heading, Slide, Text, BlockQuote } from 'spectacle';
+import { CodePane, Deck, Heading, Slide, Text } from 'spectacle';
 import { injectGlobal } from 'styled-components';
 import createTheme from 'spectacle/lib/themes/default';
 import preloader from 'spectacle/lib/utils/preloader';
@@ -8,6 +8,7 @@ import CodeSlide from 'spectacle-code-slide';
 
 import { COLORS } from './constants';
 
+import the90sSrc from './assets/90s.jpg';
 import askJeevesSrc from './assets/ask-jeeves.gif';
 import mcdonaldsSrc from './assets/mcdonalds-full.gif';
 import mcdonaldsZoomSrc from './assets/mcdonalds-zoom.gif';
@@ -36,13 +37,16 @@ import reactEuropeSrc from './assets/react-europe-talk.gif';
 import spinnerInstagramSrc from './assets/spinner-instagram.gif';
 import spinnerLinkedinSrc from './assets/spinner-linkedin.gif';
 import spinnerTwitterSrc from './assets/spinner-twitter.gif';
-import spinnerKhanAcademySrc from './assets/spinner-khanacademy.gif';
+import khanAcademyLogoSrc from './assets/khan-academy-logo.png';
+import khanAcademyLoadingSrc from './assets/khan-academy-loading.gif';
 import khanSpinnerRotateSrc from './assets/khan-spinner-rotate.gif';
 import khanSpinnerScrubSrc from './assets/khan-spinner-scrub.gif';
 import khanSpinnerSproutSrc from './assets/khan-spinner-sprout.gif';
 import khanSpinnerWobbleSrc from './assets/khan-spinner-wobble.gif';
+import khanAcademyHomepageSrc from './assets/khan-homepage.png';
 import performanceMattersSrc from './assets/performance-matters.png';
 import guppyIconSrc from './assets/guppy-icon.png';
+import guppyScreenGrab from './assets/guppy-screen-grab.png';
 import guppyIntroSrc from './assets/guppy-intro.mp4';
 import guppyOriginalInstallSrc from './assets/guppy-before-trimmed.mp4';
 import guppyWhimsicalInstallSrc from './assets/guppy-after.mp4';
@@ -56,9 +60,12 @@ import canvasDomSrc from './assets/canvas-dom.png';
 import seriousOffice1Src from './assets/serious-office-1.jpg';
 import seriousOffice2Src from './assets/serious-office-2.jpg';
 import seriousOffice3Src from './assets/serious-office-3.jpg';
-import seriousOffice4Src from './assets/office-mean-boss.jpg';
-import seriousOffice5Src from './assets/youre-fired.jpg';
-import fintechSrc from './assets/fintech-2.jpg';
+import angry1Src from './assets/angry-1.jpg';
+import angry2Src from './assets/angry-2.jpg';
+import angry3Src from './assets/angry-3.jpg';
+import fintechSearchSrc from './assets/fintech-search.mp4';
+import fintechSoftwareSrc from './assets/fintech-software.jpg';
+import actuarialSoftwareSrc from './assets/actuarial-software.jpg';
 import monolistSrc from './assets/monolist.gif';
 import whyNodeProviderSrc from './assets/why-node-provider.gif';
 import rftLogoSrc from './assets/rft-logo.gif';
@@ -66,6 +73,19 @@ import patreonGrowthSrc from './assets/patreon-growth.png';
 import reactSpringSrc from './assets/react-spring.gif';
 import reactFlipToolkitSrc from './assets/react-flip-toolkit.gif';
 import poseDemoSrc from './assets/pose-demo.gif';
+import emailComposeSrc from './assets/email-client-masks/email-compose.jpg';
+import emailComposeLeftSrc from './assets/email-client-masks/email-compose-left.jpg';
+import emailComposeTopSrc from './assets/email-client-masks/email-compose-top.jpg';
+import emailChildSrc from './assets/email-client-masks/email-child-init.jpg';
+import emailChildLeftSrc from './assets/email-client-masks/email-child-left.jpg';
+import emailChildTopSrc from './assets/email-client-masks/email-child-top.jpg';
+import emailChildSizeSrc from './assets/email-client-masks/email-child-size.jpg';
+import emailOutboxSrc from './assets/email-client-masks/email-outbox.jpg';
+import emailOutboxLeftSrc from './assets/email-client-masks/email-outbox-left.jpg';
+import emailOutboxTopSrc from './assets/email-client-masks/email-outbox-top.jpg';
+import transportStartSrc from './assets/email-client-masks/transport-start.jpg';
+import transportEndSrc from './assets/email-client-masks/transport-end.jpg';
+import transportCalcSrc from './assets/email-client-masks/transport-calc.jpg';
 
 import FullscreenImage from './components/FullscreenImage';
 import Confetti from './components/Confetti';
@@ -79,13 +99,13 @@ import WhimsicalInstaller from './components/WhimsicalInstaller';
 import Spacer from './components/Spacer';
 import Title from './slides/Title';
 import SectionStart from './slides/SectionStart';
-import WishTheInternet from './slides/WishTheInternet';
 import Circles from './slides/Circles';
 
 require('normalize.css');
 require('highlight.js/styles/arta.css');
 
 preloader({
+  the90sSrc,
   askJeevesSrc,
   mcdonaldsSrc,
   mcdonaldsZoomSrc,
@@ -114,12 +134,14 @@ preloader({
   spinnerInstagramSrc,
   spinnerLinkedinSrc,
   spinnerTwitterSrc,
-  spinnerKhanAcademySrc,
+  khanAcademyLoadingSrc,
   khanSpinnerRotateSrc,
   khanSpinnerScrubSrc,
   khanSpinnerSproutSrc,
   khanSpinnerWobbleSrc,
+  khanAcademyHomepageSrc,
   guppyIconSrc,
+  guppyScreenGrab,
   guppyIntroSrc,
   guppyOriginalInstallSrc,
   guppyWhimsicalInstallSrc,
@@ -133,9 +155,12 @@ preloader({
   seriousOffice1Src,
   seriousOffice2Src,
   seriousOffice3Src,
-  seriousOffice4Src,
-  seriousOffice5Src,
-  fintechSrc,
+  angry1Src,
+  angry2Src,
+  angry3Src,
+  fintechSearchSrc,
+  fintechSoftwareSrc,
+  actuarialSoftwareSrc,
   monolistSrc,
   whyNodeProviderSrc,
   rftLogoSrc,
@@ -143,6 +168,19 @@ preloader({
   reactSpringSrc,
   reactFlipToolkitSrc,
   poseDemoSrc,
+  emailComposeSrc,
+  emailComposeLeftSrc,
+  emailComposeTopSrc,
+  emailChildSrc,
+  emailChildLeftSrc,
+  emailChildTopSrc,
+  emailChildSizeSrc,
+  emailOutboxSrc,
+  emailOutboxLeftSrc,
+  emailOutboxTopSrc,
+  transportStartSrc,
+  transportEndSrc,
+  transportCalcSrc,
 });
 
 // HACK: Spectacle applies a `transform: scale(1)` to all slides.
@@ -191,15 +229,13 @@ export default class Presentation extends React.Component {
         */}
         <Slide />
 
-        <Slide>
-          <WishTheInternet />
-        </Slide>
+        <Slide bgImage={the90sSrc} />
 
         <Slide bgColor="#000000">
           <FullscreenImage src={joshComputerSrc} />
         </Slide>
 
-        <Slide bgColor="secondary">
+        <Slide bgColor="secondary" transition={['none']}>
           <FullscreenImage src={jesseSkiingSrc} />
         </Slide>
 
@@ -280,7 +316,13 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide bgColor="secondary" transition={['none']}>
+        <Slide
+          bgColor="secondary"
+          transition={['none']}
+          notes={`
+            There's a ton of opportunity to delight our users because we can interact with them directly.
+          `}
+        >
           <Heading size={3} textFont="secondary" textColor="pink">
             Let's focus on
             <br />
@@ -289,7 +331,7 @@ export default class Presentation extends React.Component {
                 color: COLORS.lime[500],
               }}
             >
-              interaction
+              animation
             </span>{' '}
             &{' '}
             <span
@@ -297,7 +339,7 @@ export default class Presentation extends React.Component {
                 color: COLORS.lime[500],
               }}
             >
-              animation
+              interaction
             </span>
             .
           </Heading>
@@ -351,9 +393,14 @@ export default class Presentation extends React.Component {
           <FullscreenImage src={spinnerInstagramSrc} />
         </Slide>
         <Slide bgColor="secondary" transition={['none']}>
-          <FullscreenImage src={spinnerKhanAcademySrc} />
+          <FullscreenImage src={khanAcademyHomepageSrc} />
         </Slide>
-
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={khanAcademyLoadingSrc} />
+        </Slide>
+        <Slide>
+          <img src={khanAcademyLogoSrc} style={{ maxWidth: '100%' }} />
+        </Slide>
         <Slide>
           <FullscreenImage src={khanSpinnerRotateSrc} />
         </Slide>
@@ -382,6 +429,9 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide bgColor="secondary">
+          <img src={guppyScreenGrab} style={{ width: '100%' }} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
           <video
             autoPlay
             src={guppyIntroSrc}
@@ -392,7 +442,10 @@ export default class Presentation extends React.Component {
           />
         </Slide>
 
-        <Slide bgColor="secondary">
+        <Slide
+          bgColor="secondary"
+          notes={`SO, what do you do? If you can't improve the performance, how do you improve the experience for the user?`}
+        >
           <video
             autoPlay
             src={guppyOriginalInstallSrc}
@@ -461,8 +514,7 @@ export default class Presentation extends React.Component {
 
             // Render
             { loc: [42, 43] },
-            { loc: [43, 49] },
-            { loc: [50, 55] },
+            { loc: [43, 48] },
 
             // componentDidMount
             { loc: [13, 14] },
@@ -473,7 +525,7 @@ export default class Presentation extends React.Component {
             { loc: [30, 35] },
             { loc: [36, 40] },
 
-            { loc: [42, 55] },
+            { loc: [42, 49] },
           ]}
         />
 
@@ -496,7 +548,7 @@ export default class Presentation extends React.Component {
           lang="jsx"
           code={require('./code/FileOriginal.example')}
           ranges={[
-            { loc: [0, 1], title: '<File />' },
+            { loc: [0, 1], title: '<Projectile />' },
             { loc: [1, 6] },
             { loc: [7, 8] },
             { loc: [9, 10] },
@@ -529,7 +581,7 @@ export default class Presentation extends React.Component {
           lang="jsx"
           code={require('./code/FileFinal.example')}
           ranges={[
-            { loc: [0, 1], title: '<File /> v2' },
+            { loc: [0, 1], title: '<Projectile /> v2' },
             { loc: [1, 6] },
             { loc: [7, 8] },
             { loc: [9, 10] },
@@ -569,23 +621,41 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide bgColor="secondary">
-          <FullscreenImage src={seriousOffice1Src} />
-        </Slide>
         <Slide bgColor="secondary" transition={['none']}>
-          <FullscreenImage src={fintechSrc} />
+          <FullscreenImage src={seriousOffice1Src} />
         </Slide>
         <Slide bgColor="secondary" transition={['none']}>
           <FullscreenImage src={seriousOffice2Src} />
         </Slide>
         <Slide bgColor="secondary" transition={['none']}>
-          <FullscreenImage src={seriousOffice3Src} />
+          <FullscreenImage src={actuarialSoftwareSrc} />
         </Slide>
         <Slide bgColor="secondary" transition={['none']}>
-          <FullscreenImage src={seriousOffice4Src} />
+          <FullscreenImage src={fintechSoftwareSrc} />
         </Slide>
         <Slide bgColor="secondary" transition={['none']}>
-          <FullscreenImage src={seriousOffice5Src} />
+          <FullscreenImage src={angry1Src} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={angry2Src} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={angry3Src} />
+        </Slide>
+
+        <Slide>
+          <Heading size={4}>Remember the definition.</Heading>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <video
+            autoPlay
+            src={fintechSearchSrc}
+            style={{
+              width: '100%',
+              margin: 'auto',
+            }}
+          />
         </Slide>
 
         {/*
@@ -648,22 +718,20 @@ export default class Presentation extends React.Component {
           <Caption>Source: Rachel Nabors, rachelnabors.com</Caption>
         </Slide>
 
-        <Slide
+        <CodeSlide
           bgColor="secondary"
-          transition={['none']}
-          notes={`
-            A joke isn't funny the 70th time you hear it, but that doesn't mean
-            we should abolish jokes entirely!
-
-            You can also just add a user setting to disable animations, which
-            is not only helpful for no-nonsense, right-down-to-business
-            curmudgeons, but also folks with vestibular disorders.
-          `}
-        >
-          <Heading textColor="green" size={3}>
-            Simplify over time
-          </Heading>
-        </Slide>
+          lang="jsx"
+          code={require('./code/local-storage.example')}
+          ranges={[
+            {
+              loc: [0, 2],
+            },
+            { loc: [3, 4] },
+            { loc: [4, 5] },
+            { loc: [5, 6] },
+            { loc: [6, 7] },
+          ]}
+        />
 
         <Slide bgColor="secondary" transition={['none']}>
           <Heading textColor="primary" size={3}>
@@ -682,7 +750,7 @@ export default class Presentation extends React.Component {
 
         <CodeSlide
           bgColor="secondary"
-          lang="flow"
+          lang="js"
           code={require('./code/Foldable.example')}
           ranges={[
             {
@@ -759,7 +827,7 @@ export default class Presentation extends React.Component {
         />
 
         <Slide bgColor="deepPurple" textColor="primary">
-          <SectionStart subtitle="Element 2" title="Moving Nodes Around" />
+          <SectionStart title="Moving Nodes Around" />
         </Slide>
 
         <Slide bgColor="#000000">
@@ -767,8 +835,8 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <Heading textColor="secondary">{'<NodeProvider>'}</Heading>
-          <p>Capture DOM node and bounding-box information</p>
+          <Heading textColor="secondary">{'<NodeContext>'}</Heading>
+          <p>Capture references to the DOM nodes on the screen</p>
 
           <br />
 
@@ -777,13 +845,63 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <Heading size={3} textColor="secondary">
-            NodeProvider
+          <Heading textColor="secondary">{'<NodeContext>'}</Heading>
+          <p>Capture references to the DOM nodes on the screen</p>
+
+          <br />
+          <span style={{ opacity: 0.25 }}>
+            <Heading textColor="secondary">{'<Transport>'}</Heading>
+            <p>Orchestrate motion between DOM nodes</p>
+          </span>
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <Heading size={4} textColor="primary">
+            We need these nodes:
           </Heading>
           <br />
           <br />
 
           <img src={whyNodeProviderSrc} style={{ width: '100%' }} />
+        </Slide>
+
+        <CodeSlide
+          bgColor="secondary"
+          lang="jsx"
+          transition={['none']}
+          code={`document.querySelector('.compose-btn')`}
+          ranges={[
+            {
+              loc: [0, 1],
+              title: 'The traditional way',
+            },
+          ]}
+        />
+
+        <CodeSlide
+          bgColor="secondary"
+          lang="jsx"
+          transition={['none']}
+          code={require('./code/ClientRect.example')}
+          ranges={[
+            { loc: [0, 2] },
+            { loc: [3, 5] },
+            { loc: [6, 8] },
+            { loc: [8, 9] },
+            { loc: [9, 10] },
+            { loc: [11, 13] },
+            { loc: [14, 16] },
+          ]}
+        />
+
+        <Slide>
+          <Heading textColor="secondary">{'<NodeContext>'}</Heading>
+          <p>Capture references to the DOM nodes on the screen</p>
+
+          <br />
+
+          <Heading textColor="secondary">{'<Transport>'}</Heading>
+          <p>Orchestrate motion between DOM nodes</p>
         </Slide>
 
         {/* <CodeSlide
@@ -822,25 +940,61 @@ export default class Presentation extends React.Component {
               loc: [0],
               title: 'NodeProvider Usage',
             },
+            // Imports
+            { loc: [0, 4] },
+
             // App
-            { loc: [0, 9] },
-            { loc: [3, 6] },
+            { loc: [5, 14] },
+            { loc: [8, 11] },
 
             // InboxHeading
-            { loc: [10, 19] },
-            { loc: [11, 13] },
-            { loc: [13, 16] },
+            { loc: [15, 24] },
+            { loc: [16, 18] },
+            { loc: [18, 21] },
 
             // SomewhereElse
-            { loc: [20, 29] },
+            { loc: [25, 34] },
           ]}
         />
 
         <Slide bgColor="secondary">
-          <Heading textColor="primary">{'<Transport />'}</Heading>
-          <br />
-          <br />
-          <FullscreenImage src={transportAreasSrc} />
+          <FullscreenImage src={emailComposeSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={emailComposeLeftSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={emailComposeTopSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={emailChildSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={emailChildLeftSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={emailChildTopSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={emailChildSizeSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={emailOutboxSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={emailOutboxLeftSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={emailOutboxTopSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={transportStartSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={transportEndSrc} />
+        </Slide>
+        <Slide bgColor="secondary" transition={['none']}>
+          <FullscreenImage src={transportCalcSrc} />
         </Slide>
 
         <CodeSlide
@@ -1243,7 +1397,33 @@ if (prefersReducedMotion) {
         </Slide>
 
         <Slide>
-          <Heading />
+          <Heading textColor="purple" size={5}>
+            There's an ecosystem of
+          </Heading>
+
+          <Heading textColor="pink" size={3}>
+            amazing tools.
+          </Heading>
+        </Slide>
+
+        <Slide>
+          <Heading textColor="purple" size={5}>
+            The platform is getting
+          </Heading>
+
+          <Heading textColor="pink" size={3}>
+            so powerful.
+          </Heading>
+        </Slide>
+
+        <Slide>
+          <Heading textColor="purple" size={5}>
+            We're just at the beginning.
+          </Heading>
+
+          <Heading textColor="pink" size={3}>
+            Come help build stuff!
+          </Heading>
         </Slide>
 
         <Slide>
