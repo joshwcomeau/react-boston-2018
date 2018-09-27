@@ -70,6 +70,7 @@ import monolistSrc from './assets/monolist.gif';
 import whyNodeProviderSrc from './assets/why-node-provider.gif';
 import rftLogoSrc from './assets/rft-logo.gif';
 import patreonGrowthSrc from './assets/patreon-growth.png';
+import patreonConfettiSrc from './assets/patreon-confetti.png';
 import reactSpringSrc from './assets/react-spring.gif';
 import reactFlipToolkitSrc from './assets/react-flip-toolkit.gif';
 import poseDemoSrc from './assets/pose-demo.gif';
@@ -86,6 +87,11 @@ import emailOutboxTopSrc from './assets/email-client-masks/email-outbox-top.jpg'
 import transportStartSrc from './assets/email-client-masks/transport-start.jpg';
 import transportEndSrc from './assets/email-client-masks/transport-end.jpg';
 import transportCalcSrc from './assets/email-client-masks/transport-calc.jpg';
+import houdiniSrc from './assets/houdini.png';
+import dominosSrc from './assets/dominos-1.mp4';
+import dominosGrowthSrc from './assets/dominos-growth.png';
+import dominosTechSrc from './assets/dominos-tech.png';
+import dominosLogoSrc from './assets/dominos-logo.jpg';
 
 import FullscreenImage from './components/FullscreenImage';
 import Confetti from './components/Confetti';
@@ -165,6 +171,7 @@ preloader({
   whyNodeProviderSrc,
   rftLogoSrc,
   patreonGrowthSrc,
+  patreonConfettiSrc,
   reactSpringSrc,
   reactFlipToolkitSrc,
   poseDemoSrc,
@@ -181,6 +188,11 @@ preloader({
   transportStartSrc,
   transportEndSrc,
   transportCalcSrc,
+  houdiniSrc,
+  dominosSrc,
+  dominosGrowthSrc,
+  dominosTechSrc,
+  dominosLogoSrc,
 });
 
 // HACK: Spectacle applies a `transform: scale(1)` to all slides.
@@ -643,21 +655,6 @@ export default class Presentation extends React.Component {
           <FullscreenImage src={angry3Src} />
         </Slide>
 
-        <Slide>
-          <Heading size={4}>Remember the definition.</Heading>
-        </Slide>
-
-        <Slide bgColor="secondary">
-          <video
-            autoPlay
-            src={fintechSearchSrc}
-            style={{
-              width: '100%',
-              margin: 'auto',
-            }}
-          />
-        </Slide>
-
         {/*
 
 
@@ -849,10 +846,10 @@ export default class Presentation extends React.Component {
           <p>Capture references to the DOM nodes on the screen</p>
 
           <br />
-          <span style={{ opacity: 0.25 }}>
-            <Heading textColor="secondary">{'<Transport>'}</Heading>
-            <p>Orchestrate motion between DOM nodes</p>
-          </span>
+          <Heading textColor="secondary" style={{ opacity: 0.15 }}>
+            {'<Transport>'}
+          </Heading>
+          <p style={{ opacity: 0.15 }}>Orchestrate motion between DOM nodes</p>
         </Slide>
 
         <Slide bgColor="secondary">
@@ -893,16 +890,6 @@ export default class Presentation extends React.Component {
             { loc: [14, 16] },
           ]}
         />
-
-        <Slide>
-          <Heading textColor="secondary">{'<NodeContext>'}</Heading>
-          <p>Capture references to the DOM nodes on the screen</p>
-
-          <br />
-
-          <Heading textColor="secondary">{'<Transport>'}</Heading>
-          <p>Orchestrate motion between DOM nodes</p>
-        </Slide>
 
         {/* <CodeSlide
           bgColor="secondary"
@@ -956,6 +943,20 @@ export default class Presentation extends React.Component {
             { loc: [25, 34] },
           ]}
         />
+
+        <Slide>
+          <Heading textColor="secondary" style={{ opacity: 0.15 }}>
+            {'<NodeContext>'}
+          </Heading>
+          <p style={{ opacity: 0.15 }}>
+            Capture references to the DOM nodes on the screen
+          </p>
+
+          <br />
+
+          <Heading textColor="secondary">{'<Transport>'}</Heading>
+          <p>Orchestrate motion between DOM nodes</p>
+        </Slide>
 
         <Slide bgColor="secondary">
           <FullscreenImage src={emailComposeSrc} />
@@ -1109,6 +1110,10 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
+          <FullscreenImage src={monolistSrc} />
+        </Slide>
+
+        <Slide>
           <img src={patreonGrowthSrc} />
 
           <br />
@@ -1122,7 +1127,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <FullscreenImage src={monolistSrc} />
+          <FullscreenImage src={patreonConfettiSrc} />
         </Slide>
 
         <Slide>
@@ -1136,6 +1141,30 @@ export default class Presentation extends React.Component {
             }}
           />
         </Slide>
+
+        <Slide>
+          <img src={dominosLogoSrc} width={450} />
+        </Slide>
+
+        <Slide bgColor="secondary">
+          <video
+            autoPlay
+            src={dominosSrc}
+            style={{
+              width: '100%',
+              margin: 'auto',
+            }}
+          />
+        </Slide>
+
+        <Slide>
+          <FullscreenImage src={dominosGrowthSrc} />
+        </Slide>
+        <Slide>
+          <FullscreenImage src={dominosTechSrc} />
+        </Slide>
+
+        <Slide />
 
         <Slide>
           <Heading textFont="secondary" textColor="purple" size={4}>
@@ -1242,6 +1271,45 @@ export default class Presentation extends React.Component {
             SO EXCITING
           </Heading>
         </Slide>
+
+        <Slide bgColor="#fdd835">
+          <FullscreenImage src={houdiniSrc} />
+        </Slide>
+
+        <CodeSlide
+          bgColor="secondary"
+          lang="jsx"
+          transition={['none']}
+          code={require('./code/HoudiniPaintWorklet.example')}
+          ranges={[
+            {
+              loc: [0],
+              title: 'Houdini Painter',
+            },
+            { loc: [0, 1] },
+            { loc: [1, 2] },
+            { loc: [2, 3] },
+            { loc: [3, 4] },
+            { loc: [4, 5] },
+            { loc: [6, 7] },
+            { loc: [10, 11] },
+          ]}
+        />
+
+        <CodeSlide
+          bgColor="secondary"
+          lang="html"
+          transition={['none']}
+          code={require('./code/HoudiniPaintUsage.example')}
+          ranges={[
+            {
+              loc: [0],
+              title: 'Houdini Paint Usage',
+            },
+            { loc: [3, 6] },
+            { loc: [9, 12] },
+          ]}
+        />
 
         <Slide>
           <video
@@ -1378,9 +1446,16 @@ if (prefersReducedMotion) {
         </Slide>
 
         <Slide>
-          <Heading size={4} textColor="green">
-            At Khan Academy, we have a "disable animations" property on our user
-            model. We check that as well as `prefers-reduced-motion`.
+          <Heading size={4}>
+            At Khan Academy, we have a{' '}
+            <span style={{ color: COLORS.green[700], fontFamily: 'monospace' }}>
+              disable-animations
+            </span>{' '}
+            property on our user model. We check that as well as{' '}
+            <span style={{ color: COLORS.green[700], fontFamily: 'monospace' }}>
+              prefers-reduced-motion
+            </span>
+            .
           </Heading>
         </Slide>
 
