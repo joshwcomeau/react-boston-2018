@@ -1,0 +1,7 @@
+<Transport
+  from={someNode}
+  to={someOtherNode}
+  status={openOrClosed}
+>
+  <TheModalOrWhatever />
+</Transport>

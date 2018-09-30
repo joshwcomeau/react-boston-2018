@@ -65,7 +65,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "flow": "flow",
-    "deploy": "yarn run build && surge -p build -d the-case-for-whimsy.surge.sh",
+    "deploy": "yarn run build && surge -p build -d the-case-for-whimsy-boston.surge.sh",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

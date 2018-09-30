@@ -17,8 +17,8 @@ class ComposeEmail extends Component {
           outboxHeading,
         }) => (
           <Transport
-            fromNode={composeBtn}
-            toNode={outboxHeading}
+            from={composeBtn}
+            to={outboxHeading}
             status={
               status === 'composing'
                 ? 'open'
